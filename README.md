@@ -1,2 +1,2 @@
-# KinalStore_2023238
+# Kinal Store
 Un programa para administrar tiendas de forma efectiva y simple.
