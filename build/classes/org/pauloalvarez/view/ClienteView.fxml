@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="338.0" minWidth="600.0" prefHeight="569.0" prefWidth="790.0" styleClass="backgroundDark" stylesheets="@../assets/resources/KinalStoreCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pauloalvarez.controller.MenuClientesController">
+   <children>
+      <TableView fx:id="tblClientes" layoutX="27.0" layoutY="222.0" prefHeight="320.0" prefWidth="736.0" stylesheets="@../assets/resources/KinalStoreCSS.css">
+        <columns>
+          <TableColumn fx:id="colCodigoC" prefWidth="50.0" resizable="false" text="ID" />
+          <TableColumn fx:id="colApellidoC" prefWidth="100.0" text="Apellidos" />
+            <TableColumn fx:id="colNombreC" prefWidth="100.0" text="Nombres" />
+            <TableColumn fx:id="colNITC" prefWidth="70.0" resizable="false" text="NIT" />
+            <TableColumn fx:id="colTelefonoC" prefWidth="70.0" resizable="false" text="Teléfono" />
+            <TableColumn fx:id="colEmailC" minWidth="170.0" prefWidth="92.0" text="E-Mail" />
+            <TableColumn fx:id="colDireccionC" minWidth="172.0" prefWidth="150.0" text="Dirección" />
+        </columns>
+      </TableView>
+      <GridPane layoutX="105.0" layoutY="97.0" prefWidth="580.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="60.0" minWidth="10.0" prefWidth="60.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.0" minWidth="10.0" prefWidth="120.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="70.0" minWidth="10.0" prefWidth="70.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="80.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="70.0" minWidth="10.0" prefWidth="70.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.0" minWidth="10.0" prefWidth="212.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="45.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Nombres:" textFill="#f2f2f7">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Apellidos:" textFill="#f2f2f7" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label text="NIT:" textFill="#f2f2f7" GridPane.columnIndex="2">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Dirección:" textFill="#f2f2f7" GridPane.columnIndex="4">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label text="E-Mail:" textFill="#f2f2f7" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Teléfono:" textFill="#f2f2f7" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label text="ID:" textFill="#f2f2f7" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtNombreC" disable="true" GridPane.columnIndex="1" />
+            <TextField fx:id="txtApellidoC" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtTelefonoC" disable="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField fx:id="txtNITC" disable="true" GridPane.columnIndex="3" />
+            <TextField fx:id="txtDireccionC" disable="true" GridPane.columnIndex="5" />
+            <TextField fx:id="txtEmailC" disable="true" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <TextField fx:id="txtCodigoC" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+         </children>
+      </GridPane>
+      <Pane maxHeight="90.0" maxWidth="790.0" prefHeight="90.0" prefWidth="790.0" styleClass="backgroundMid" stylesheets="@../assets/resources/KinalStoreCSS.css" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-2.0">
+         <children>
+            <HBox alignment="CENTER" layoutX="1.0" prefHeight="90.0" prefWidth="790.0">
+               <children>
+                  <Button fx:id="btnAgregarC" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#agregar" prefHeight="75.0" prefWidth="75.0" text="Agregar" textAlignment="CENTER">
+                     <graphic>
+                        <ImageView fx:id="imgAgregarC" fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/images/selecPersonaMas.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnEliminarC" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#eliminar" onMouseClicked="#seleccionarElemento" prefHeight="75.0" prefWidth="75.0" text="Eliminar" textAlignment="CENTER">
+                     <graphic>
+                        <ImageView fx:id="imgEliminarC" fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/images/selecPersonaMenos.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnEditarC" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#editar" onMouseClicked="#seleccionarElemento" prefHeight="75.0" prefWidth="75.0" text="Editar" textAlignment="CENTER">
+                     <graphic>
+                        <ImageView fx:id="imgEditarC" fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/images/selecEditar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnReporteC" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#reporte" prefHeight="75.0" prefWidth="75.0" text="Reporte" textAlignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/images/selecReporte.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <Button fx:id="btnRegresar" alignment="CENTER" contentDisplay="TOP" layoutX="9.0" layoutY="9.0" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#regresar" prefHeight="75.0" prefWidth="75.0" styleClass="cancelButton" text="Regresar" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/images/flechaIzquierda.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children></Pane>
+      <ImageView fitHeight="35.0" layoutX="304.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/persona2.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="360.0" layoutY="169.0" text="Clientes" textFill="#f2f2f7">
+         <font>
+            <Font name="Arial" size="35.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
