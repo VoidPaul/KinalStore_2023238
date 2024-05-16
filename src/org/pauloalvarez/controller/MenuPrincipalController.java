@@ -26,8 +26,6 @@ public class MenuPrincipalController implements Initializable {
     @FXML
     private MenuItem btnInventario;
     @FXML
-    private MenuItem btnSalario;
-    @FXML
     private MenuItem btnQuejas;
     @FXML 
     private MenuItem btnProgramador;

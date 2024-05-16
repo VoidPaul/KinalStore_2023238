@@ -140,13 +140,17 @@ create table InfoFactura (
 		references Productos (codigoProducto)
 );
 
--- CRUD Base de Datos --
+/* CRUDS */
 
--- CRUD Proveedores --
+/* CRUD Proveedores */
 
--- CRUD Empleados --
 
--- CRUD Clientes --
+
+/* CRUD Empleados */
+
+
+
+/* CRUD Clientes */
 
 delimiter $$
 create procedure sp_agregarCliente(in _codigoCliente int, 
@@ -202,38 +206,77 @@ begin
     Clientes.emailCliente as 'E-mail'
     from Clientes;
 end$$
-/*delimiter;
+delimiter;
 
--- CRUD Productos --
+/* CRUD Productos */
 
 delimiter $$
-create procedure sp_agregarProveedor()
+create procedure sp_agregarProducto(in _codigoProducto varchar(45),
+										_descripcionProducto varchar(45),
+										_precioUnitario decimal(10,2),
+										_precioDocena decimal(10,2),
+										_precioMayor decimal(10,2),
+										_imagenProducto varchar(45),
+										_cantidadExistencia int,
+										_codigoTipoProducto int,
+										_codigoProveedor int)
 begin
-	insert into Proveedores ()
-    values ();
+	insert into Productos (codigoProducto, descripcionProducto, precioUnitario, precioDocena, precioMayor, imagenProducto, cantidadExistencia, codigoTipoProducto, codigoProveedor)
+    values (_codigoProducto, _descripcionProducto, _precioUnitario, _precioDocena, _precioMayor, _imagenProducto, _cantidadExistencia, _codigoTipoProducto, _codigoProveedor);
 end$$
 delimiter;
 
 delimiter $$
-create procedure sp_eliminarProveedor(in _codigoProveedor int)
+create procedure sp_eliminarProducto(in _codigoProducto varchar(45))
 begin
-	delete from Proveedores
-    where codigoProveedor = _codigoProveedor;
+	delete from Productos
+    where codigoProducto = _codigoProducto;
 end$$
 delimiter;
 
 delimiter $$
-create procedure sp_editarProveedor()
+create procedure sp_editarProducto(in _codigoProducto varchar(45),
+										_descripcionProducto varchar(45),
+										_precioUnitario decimal(10,2),
+										_precioDocena decimal(10,2),
+										_precioMayor decimal(10,2),
+										_imagenProducto varchar(45),
+										_cantidadExistencia int,
+										_codigoTipoProducto int,
+										_codigoProveedor int)
 begin
-	update Proveedores
-    set 
-    where codigoProveedor = _codigoProveedor;
+	update Productos
+    set descripcionProducto = _descripcionProducto,
+    precioUnitario = _precioUnitario,
+    precioDocena = _precioDocena,
+    precioMayor = _precioMayor,
+    imagenProducto = _imagenProducto,
+    cantidadExistencia = _cantidadExistencia,
+    codigoTipoProducto = _codigoTipoProducto,
+    codigoProveedor = _codigoProveedor
+    where codigoProducto = _codigoProducto;
 end$$
 delimiter;
 
 delimiter $$
-create procedure sp_reporteProveedor()
+create procedure sp_reporteProducto()
 begin
-	select 
-    from Proveedores;
+	select Productos.codigoProducto as 'ID',
+    Productos.descripcionProducto as 'Descipción',
+    Productos.precioUnitario as 'Precio/',
+    Productos.precioDocena as 'Precio/',
+    Productos.precioMayor as 'Precio/',
+    Productos.imagenProducto as 'Imagen',
+    Productos.cantidadExistencia as 'Cant. Existencia',
+    Productos.codigoTipoProducto as 'Categoría ID',
+    Productos.codigoProveedor as 'Proveedor ID'
+    from Productos;
 end$$
+-- delimiter;
+
+-- CRUD Tipo Producto (Categoria) --
+
+
+
+/* Triggers */
+

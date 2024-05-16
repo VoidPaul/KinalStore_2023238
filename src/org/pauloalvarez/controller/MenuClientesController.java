@@ -84,7 +84,7 @@ public class MenuClientesController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        
     }
 
     public void cargarDatos() {

@@ -81,7 +81,7 @@ public class Main extends Application {
     
     public void menuProveedorContacto() {
         try {
-            MenuProveedorContactoController menuProveedorContacto = (MenuProveedorContactoController) cambiarEscena(".fxml");
+            MenuProveedorContactoController menuProveedorContacto = (MenuProveedorContactoController) cambiarEscena("ProveedorContactoView.fxml");
             menuProveedorContacto.setEscenarioPrincipal(this);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -99,7 +99,7 @@ public class Main extends Application {
     
     public void menuTipoEmpleado() {
         try {
-            MenuTipoEmpleadoController menuTipoEmpleado = (MenuTipoEmpleadoController) cambiarEscena(".fxml");
+            MenuTipoEmpleadoController menuTipoEmpleado = (MenuTipoEmpleadoController) cambiarEscena("TipoEmpleadoView.fxml");
             menuTipoEmpleado.setEscenarioPrincipal(this);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -135,7 +135,7 @@ public class Main extends Application {
     
     public void menuInventarioView() {
         try {
-            MenuInventarioController menuInventario = (MenuInventarioController) cambiarEscena("InventarioView");
+            MenuInventarioController menuInventario = (MenuInventarioController) cambiarEscena("InventarioView.fxml");
             menuInventario.setEscenarioPrincipal(this);
         } catch (Exception ex) {
             ex.printStackTrace();
