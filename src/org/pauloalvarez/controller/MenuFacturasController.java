@@ -17,6 +17,9 @@ public class MenuFacturasController implements Initializable {
     
     @FXML
     private Button btnRegresar;
+    @FXML
+    private Button cambiarSubMenu;
+    
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -33,9 +36,11 @@ public class MenuFacturasController implements Initializable {
     }
     
     @FXML
-    public void regresar(ActionEvent event) {
+    public void cambiarMenu(ActionEvent event) {
         if (event.getSource() == btnRegresar) {
             escenarioPrincipal.menuPrincipalView();
+        } else if (event.getSource() == cambiarSubMenu) {
+            escenarioPrincipal.menuComprasView();
         }
     }
 }
