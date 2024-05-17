@@ -144,7 +144,7 @@
                   <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <TextField layoutX="492.0" layoutY="35.0" prefHeight="90.0" prefWidth="217.0" />
+            <TextField alignment="TOP_LEFT" layoutX="492.0" layoutY="35.0" prefHeight="90.0" prefWidth="217.0" />
             <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="494.0" layoutY="15.0" nodeOrientation="LEFT_TO_RIGHT" text="Descripción:" textFill="#f2f2f7">
                <font>
                   <Font name="Arial" size="12.0" />

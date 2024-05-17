@@ -64,9 +64,9 @@
          </children>
       </Pane>
       <Pane layoutX="27.0" layoutY="109.0" prefHeight="433.0" prefWidth="736.0" styleClass="innerPane" />
-      <HBox layoutX="335.0" layoutY="97.0" prefHeight="21.0" prefWidth="120.0" styleClass="menuChangePane">
+      <HBox layoutX="331.0" layoutY="97.0" prefHeight="21.0" prefWidth="128.0" styleClass="menuChangePane">
          <children>
-            <Label minHeight="20.0" prefHeight="24.0" prefWidth="60.0" styleClass="menuChangeTile" text="Empleados" textAlignment="CENTER" />
+            <Label minHeight="20.0" prefHeight="24.0" prefWidth="67.0" styleClass="menuChangeTile" text="Empleados" textAlignment="CENTER" />
             <Button fx:id="cambiarSubMenu" mnemonicParsing="false" onAction="#cambiarMenu" prefHeight="20.0" prefWidth="60.0" styleClass="menuChangeButton" text="Puestos" />
          </children>
       </HBox>
