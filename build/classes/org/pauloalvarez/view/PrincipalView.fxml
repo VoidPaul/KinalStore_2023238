@@ -34,7 +34,6 @@
             <Menu mnemonicParsing="false" text="Reporte">
                <items>
                   <MenuItem fx:id="btnInventario" mnemonicParsing="false" onAction="#menuBarHandler" text="Inventario" />
-                  <MenuItem fx:id="btnSalario" disable="true" mnemonicParsing="false" onAction="#menuBarHandler" text="Salarios" />
                   <MenuItem fx:id="btnQuejas" disable="true" mnemonicParsing="false" onAction="#menuBarHandler" text="Quejas" />
                </items>
             </Menu>

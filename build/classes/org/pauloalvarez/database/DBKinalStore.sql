@@ -81,7 +81,6 @@ create table Productos (
     precioUnitario decimal(10,2),
     precioDocena decimal(10,2),
     precioMayor decimal(10,2),
-    imagenProducto varchar(45),
     cantidadExistencia int,
     codigoTipoProducto int,
     codigoProveedor int,
@@ -216,13 +215,12 @@ create procedure sp_agregarProducto(in _codigoProducto varchar(45),
 										_precioUnitario decimal(10,2),
 										_precioDocena decimal(10,2),
 										_precioMayor decimal(10,2),
-										_imagenProducto varchar(45),
 										_cantidadExistencia int,
 										_codigoTipoProducto int,
 										_codigoProveedor int)
 begin
-	insert into Productos (codigoProducto, descripcionProducto, precioUnitario, precioDocena, precioMayor, imagenProducto, cantidadExistencia, codigoTipoProducto, codigoProveedor)
-    values (_codigoProducto, _descripcionProducto, _precioUnitario, _precioDocena, _precioMayor, _imagenProducto, _cantidadExistencia, _codigoTipoProducto, _codigoProveedor);
+	insert into Productos (codigoProducto, descripcionProducto, precioUnitario, precioDocena, precioMayor, cantidadExistencia, codigoTipoProducto, codigoProveedor)
+    values (_codigoProducto, _descripcionProducto, _precioUnitario, _precioDocena, _precioMayor, _cantidadExistencia, _codigoTipoProducto, _codigoProveedor);
 end$$
 delimiter;
 
@@ -240,7 +238,6 @@ create procedure sp_editarProducto(in _codigoProducto varchar(45),
 										_precioUnitario decimal(10,2),
 										_precioDocena decimal(10,2),
 										_precioMayor decimal(10,2),
-										_imagenProducto varchar(45),
 										_cantidadExistencia int,
 										_codigoTipoProducto int,
 										_codigoProveedor int)
@@ -250,7 +247,6 @@ begin
     precioUnitario = _precioUnitario,
     precioDocena = _precioDocena,
     precioMayor = _precioMayor,
-    imagenProducto = _imagenProducto,
     cantidadExistencia = _cantidadExistencia,
     codigoTipoProducto = _codigoTipoProducto,
     codigoProveedor = _codigoProveedor
@@ -262,11 +258,10 @@ delimiter $$
 create procedure sp_reporteProducto()
 begin
 	select Productos.codigoProducto as 'ID',
-    Productos.descripcionProducto as 'Descipción',
-    Productos.precioUnitario as 'Precio/',
-    Productos.precioDocena as 'Precio/',
-    Productos.precioMayor as 'Precio/',
-    Productos.imagenProducto as 'Imagen',
+    Productos.descripcionProducto as 'Descripción',
+    Productos.precioUnitario as 'Precio/Unidad',
+    Productos.precioDocena as 'Precio/Docena',
+    Productos.precioMayor as 'Precio/Mayor',
     Productos.cantidadExistencia as 'Cant. Existencia',
     Productos.codigoTipoProducto as 'Categoría ID',
     Productos.codigoProveedor as 'Proveedor ID'
