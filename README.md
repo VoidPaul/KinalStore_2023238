@@ -14,12 +14,11 @@ Una tienda es algo esencial para la sociedad, ¿cómo podríamos conseguir cosas
     Kinal Store ofrece una interfaz limpia y fácil de entender; no solo eso, sino que también es elegante y diseñada con la estética y la experiencia de usuario en mente. Al fin y al cabo, el administrador también es una persona.
 - **Funciones Bien Definidas Para Cualquier Negocio**  
     ¿Qué es lo que necesita un programa para administrar tiendas? Necesita ser capaz del manejo de las siguientes cosas:
-
-        - Administrar Empleados
-        - Administrar Clientes
-        - Administrar Productos
-        - Administrar Proveedores de Dichos Productos
-        - Llevar un Registro de Compras y Emitir Facturas
+    - Administrar Empleados  
+    - Administrar Clientes  
+    - Administrar Productos  
+    - Administrar Proveedores de Dichos Productos  
+    - Llevar un Registro de Compras y Emitir Facturas  
 
     Pues Kinal Store puede hacer todo eso, y si se necesitan más módulos, este software también es de **✨código abierto✨**.
 - **Código Abierto**  
