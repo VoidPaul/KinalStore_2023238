@@ -242,6 +242,25 @@ table-view .corner {
     -fx-opacity: 0;
     -fx-padding: 2;
 }
+/* ComboBox */
+
+.combo-box-base {
+    -fx-background-color: #48484A46;
+    -fx-background-radius: 5.0;
+    -fx-border-color: #8E8E93;
+    -fx-border-radius: 5.0;
+}
+
+.combo-box-base .arrow {
+    -fx-background-color: #F2F2F7;
+}
+
+.combo-box-base .arrow-button {
+    -fx-background-color: #0A84FF;
+    -fx-background-radius: 5.0;
+    -fx-background-insets: 2, 2, 2;
+}
+
 /* Fondo */
 .backgroundClear {
     -fx-background-color: #48484A;
