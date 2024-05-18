@@ -139,15 +139,137 @@ create table InfoFactura (
 		references Productos (codigoProducto)
 );
 
-/* CRUDS */
+#------- CRUDS -------#
 
 /* CRUD Proveedores */
 
+delimiter $$
+create procedure sp_agregarProveedor(in _codigoProveedor int,
+									_NITProveedor varchar(10),
+									_nombresProveedor varchar(60),
+									_apellidosProveedor varchar(60),
+									_direccionProveedor varchar(60),
+									_razonSocial varchar(150),
+									_contactoPrincipal varchar(100),
+									_paginaWeb varchar(50))
+begin
+	insert into Proveedores(codigoProveedor, NITProveedor, nombresProveedor, apellidosProveedor, direccionProveedor, razonSocial, contactoPrincipal, paginaWeb)
+    values (_codigoProveedor, _NITProveedor, _nombresProveedor, _apellidosProveedor, _direccionProveedor, _razonSocial, _contactoPrincipal, _paginaWeb);
+end$$
+delimiter;
+
+delimiter $$
+create procedure sp_eliminarProveedor(in _codigoProveedor int)
+begin
+	delete from Proveedores
+    where codigoProveedor = _codigoProveedor;
+end$$
+delimiter;
+
+delimiter $$
+create procedure sp_editarProveedor(in _codigoProveedor int,
+									_NITProveedor varchar(10),
+									_nombresProveedor varchar(60),
+									_apellidosProveedor varchar(60),
+									_direccionProveedor varchar(60),
+									_razonSocial varchar(150),
+									_contactoPrincipal varchar(100),
+									_paginaWeb varchar(50))
+begin
+	update Proveedores
+    set NITProveedor = _NITProveedor,
+    nombresProveedor = _nombresProveedor,
+    apellidosProveedor = _apellidosProveedor,
+    direccionProveedor = _direccionProveedor,
+    razonSocial = _razonSocial,
+    contactoPrincipal = _contactoPrincipal,
+    paginaWeb = _paginaWeb
+    where codigoProveedor = _codigoProveedor;
+end$$
+delimiter;
+
+delimiter $$
+create procedure sp_reporteProveedor()
+begin
+	select Proveedores.codigoProveedor as 'ID',
+    Proveedores.NITProveedor as 'NIT',
+    Proveedores.nombresProveedor as 'Nombres',
+    Proveedores.apellidosProveedor as 'Apellidos',
+    Proveedores.direccionProveedor as 'Dirección',
+    Proveedores.razonSocial as 'Razón Social',
+    Proveedores.contactoPrincipal as 'Contacto Principal',
+    Proveedores.paginaWeb as 'Página Web'
+    from Proveedores;
+end$$
+delimiter;
+
+-- CRUD Telefono Proveedores --
 
 
-/* CRUD Empleados */
+
+-- CRUD Email Proveedores --
 
 
+
+/* CRUD Empleados 
+
+delimiter $$
+create procedure sp_agregarEmpleado(in )
+begin
+	
+end$$
+delimiter;
+
+delimiter $$
+create procedure sp_eliminarEmpleado(in )
+begin
+	
+end$$
+delimiter;
+
+delimiter $$
+create procedure sp_editarEmpleado(in )
+begin
+	
+end$$
+delimiter;
+
+delimiter $$
+create procedure sp_reporteEmpleado(in )
+begin
+	
+end$$
+delimiter;
+
+-- CRUD Cargo Empleado --
+
+delimiter $$
+create procedure sp_CargoEmpleado(in )
+begin
+	
+end$$
+delimiter;
+
+delimiter $$
+create procedure sp_CargoEmpleado(in )
+begin
+	
+end$$
+delimiter;
+
+delimiter $$
+create procedure sp_CargoEmpleado(in )
+begin
+	
+end$$
+delimiter;
+
+delimiter $$
+create procedure sp_CargoEmpleado(in )
+begin
+	
+end$$
+delimiter;
 
 /* CRUD Clientes */
 
@@ -267,11 +389,42 @@ begin
     Productos.codigoProveedor as 'Proveedor ID'
     from Productos;
 end$$
--- delimiter;
+delimiter;
 
 -- CRUD Tipo Producto (Categoria) --
 
+delimiter $$
+create procedure sp_agregarTipoProducto(in _codigoTipoProducto int, _descripcion varchar(45))
+begin
+	insert into TipoProducto (codigoTipoProducto, descripcion)
+    values (_codigoTipoProducto, _descripcion);
+end$$
+delimiter;
 
+delimiter $$
+create procedure sp_eliminarTipoProducto(in _codigoTipoProducto int)
+begin
+	delete from TipoProdcuto
+    where codigoTipoProducto = _codigoTipoProducto;
+end$$
+delimiter;
+
+delimiter $$
+create procedure sp_editarTipoProducto(in _codigoTipoProducto int, _descripcion varchar(45))
+begin
+	update TipoProducto
+    set descripcion = _descripcion
+    where codigoProducto = _codigoProducto;
+end$$
+delimiter;
+
+delimiter $$
+create procedure sp_reporteTipoProducto()
+begin
+	select TipoProdcuto.codigoTipoProducto as 'ID',
+    TipoProducto.descripcion as 'Descripción'
+    from TipoProducto;
+end$$
+-- delimiter;
 
 /* Triggers */
-

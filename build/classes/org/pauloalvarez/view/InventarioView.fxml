@@ -73,7 +73,7 @@
       </Pane>
       <Pane layoutX="27.0" layoutY="109.0" prefHeight="433.0" prefWidth="736.0" styleClass="innerPane">
          <children>
-            <TableView layoutX="27.0" layoutY="145.0" prefHeight="252.0" prefWidth="682.0">
+            <TableView layoutX="27.0" layoutY="145.0" prefHeight="260.0" prefWidth="682.0">
                <columns>
                   <TableColumn prefWidth="50.0" text="ID" />
                   <TableColumn prefWidth="100.0" text="Descripción" />
