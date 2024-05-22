@@ -205,13 +205,65 @@ delimiter;
 
 -- CRUD Telefono Proveedores --
 
+delimiter $$
+create procedure sp_agregarTelProveedor(in )
+begin
+	
+end$$
+delimiter;
 
+delimiter $$
+create procedure sp_eliminarTelProveedor(in )
+begin
+	
+end$$
+delimiter;
+
+delimiter $$
+create procedure sp_editarTelProveedor(in )
+begin
+	
+end$$
+delimiter;
+
+delimiter $$
+create procedure sp_reporteTelProveedor(in )
+begin
+	
+end$$
+delimiter;
 
 -- CRUD Email Proveedores --
 
+delimiter $$
+create procedure sp_agregarEmailProveedor(in )
+begin
+	
+end$$
+delimiter;
 
+delimiter $$
+create procedure sp_eliminarEmailProveedor(in )
+begin
+	
+end$$
+delimiter;
 
-/* CRUD Empleados 
+delimiter $$
+create procedure sp_editarEmailProveedor(in )
+begin
+	
+end$$
+delimiter;
+
+delimiter $$
+create procedure sp_reporteEmailProveedor()
+begin
+	
+end$$
+delimiter;
+
+CRUD Empleados 
 
 delimiter $$
 create procedure sp_agregarEmpleado(in )
@@ -235,7 +287,7 @@ end$$
 delimiter;
 
 delimiter $$
-create procedure sp_reporteEmpleado(in )
+create procedure sp_reporteEmpleado()
 begin
 	
 end$$
@@ -244,28 +296,28 @@ delimiter;
 -- CRUD Cargo Empleado --
 
 delimiter $$
-create procedure sp_CargoEmpleado(in )
+create procedure sp_agregarCargoEmpleado(in )
 begin
 	
 end$$
 delimiter;
 
 delimiter $$
-create procedure sp_CargoEmpleado(in )
+create procedure sp_eliminarCargoEmpleado(in )
 begin
 	
 end$$
 delimiter;
 
 delimiter $$
-create procedure sp_CargoEmpleado(in )
+create procedure sp_editarCargoEmpleado(in )
 begin
 	
 end$$
 delimiter;
 
 delimiter $$
-create procedure sp_CargoEmpleado(in )
+create procedure sp_reporteCargoEmpleado()
 begin
 	
 end$$

@@ -10,7 +10,6 @@ public class Producto {
     private double precioUnitario;
     private double precioDocena;
     private double precioMayor;
-    private String imagenProducto;
     private int cantidadExistencia;
     private int codigoTipoProducto;
     private int codigoProveedor;
@@ -18,13 +17,12 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(String codigoProducto, String descripcionProducto, double precioUnitario, double precioDocena, double precioMayor, String imagenProducto, int cantidadExistencia, int codigoTipoProducto, int codigoProveedor) {
+    public Producto(String codigoProducto, String descripcionProducto, double precioUnitario, double precioDocena, double precioMayor, int cantidadExistencia, int codigoTipoProducto, int codigoProveedor) {
         this.codigoProducto = codigoProducto;
         this.descripcionProducto = descripcionProducto;
         this.precioUnitario = precioUnitario;
         this.precioDocena = precioDocena;
         this.precioMayor = precioMayor;
-        this.imagenProducto = imagenProducto;
         this.cantidadExistencia = cantidadExistencia;
         this.codigoTipoProducto = codigoTipoProducto;
         this.codigoProveedor = codigoProveedor;
@@ -69,15 +67,7 @@ public class Producto {
     public void setPrecioMayor(double precioMayor) {
         this.precioMayor = precioMayor;
     }
-
-    public String getImagenProducto() {
-        return imagenProducto;
-    }
-
-    public void setImagenProducto(String imagenProducto) {
-        this.imagenProducto = imagenProducto;
-    }
-
+    
     public int getCantidadExistencia() {
         return cantidadExistencia;
     }

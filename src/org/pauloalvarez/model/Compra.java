@@ -1,45 +1,57 @@
 package org.pauloalvarez.model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Paulo Alvarez
  */
 public class Compra {
-    private int codigoCargoEmpleado;
-    private String nombreCargo;
-    private String descripcionCargo;
+    private int numeroCompra;
+    private Date fechaCompra;
+    private String descripcion;
+    private double totalCompra;
 
     public Compra() {
     }
 
-    public Compra(int codigoCargoEmpleado, String nombreCargo, String descripcionCargo) {
-        this.codigoCargoEmpleado = codigoCargoEmpleado;
-        this.nombreCargo = nombreCargo;
-        this.descripcionCargo = descripcionCargo;
+    public Compra(int numeroCompra, Date fechaCompra, String descripcion, double totalCompra) {
+        this.numeroCompra = numeroCompra;
+        this.fechaCompra = fechaCompra;
+        this.descripcion = descripcion;
+        this.totalCompra = totalCompra;
     }
 
-    public int getCodigoCargoEmpleado() {
-        return codigoCargoEmpleado;
+    public int getNumeroCompra() {
+        return numeroCompra;
     }
 
-    public void setCodigoCargoEmpleado(int codigoCargoEmpleado) {
-        this.codigoCargoEmpleado = codigoCargoEmpleado;
+    public void setNumeroCompra(int numeroCompra) {
+        this.numeroCompra = numeroCompra;
     }
 
-    public String getNombreCargo() {
-        return nombreCargo;
+    public Date getFechaCompra() {
+        return fechaCompra;
     }
 
-    public void setNombreCargo(String nombreCargo) {
-        this.nombreCargo = nombreCargo;
+    public void setFechaCompra(Date fechaCompra) {
+        this.fechaCompra = fechaCompra;
     }
 
-    public String getDescripcionCargo() {
-        return descripcionCargo;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescripcionCargo(String descripcionCargo) {
-        this.descripcionCargo = descripcionCargo;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public double getTotalCompra() {
+        return totalCompra;
+    }
+
+    public void setTotalCompra(double totalCompra) {
+        this.totalCompra = totalCompra;
     }
     
 }
