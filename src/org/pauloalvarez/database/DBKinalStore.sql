@@ -206,28 +206,36 @@ delimiter;
 -- CRUD Telefono Proveedores --
 
 delimiter $$
-create procedure sp_agregarTelProveedor(in )
+create procedure sp_agregarTelProveedor(in _codigoTelefonoProveedor int,
+											_numeroPrincipal varchar(8),
+											_numeroSecundario varchar(8),
+											_observaciones varchar(45),
+											_codigoProveedor int)
+begin
+	insert into TelProveedor (codigo)
+end$$
+delimiter;
+
+delimiter $$
+create procedure sp_eliminarTelProveedor(in codigoTelefonoProveedor int)
 begin
 	
 end$$
 delimiter;
 
 delimiter $$
-create procedure sp_eliminarTelProveedor(in )
+create procedure sp_editarTelProveedor(in _codigoTelefonoProveedor int,
+											_numeroPrincipal varchar(8),
+											_numeroSecundario varchar(8),
+											_observaciones varchar(45),
+											_codigoProveedor int)
 begin
 	
 end$$
 delimiter;
 
 delimiter $$
-create procedure sp_editarTelProveedor(in )
-begin
-	
-end$$
-delimiter;
-
-delimiter $$
-create procedure sp_reporteTelProveedor(in )
+create procedure sp_reporteTelProveedor()
 begin
 	
 end$$
