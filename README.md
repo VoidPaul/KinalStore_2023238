@@ -25,4 +25,4 @@ Una tienda es algo esencial para la sociedad, ¿cómo podríamos conseguir cosas
     Kinal Store es un software de código abierto con licencia MIT. Esto significa que eres libre de modificarlo a tus gustos y necesidades. El código es limpio y escalable, si necesitas un técnico para modificarlo, este lo hará sin mayor dificultad.
 
 ### FAQ
-
+[Trabajo en Progreso]
