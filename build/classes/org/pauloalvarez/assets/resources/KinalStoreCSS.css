@@ -153,18 +153,44 @@
     -fx-font-family: "Arial";
 }
 
-.text-area .content {
-    -fx-controll-inner-background: transparent;
-    -fx-background-radius: 5.0;
-    -fx-text-fill: #8E8E93;
-    -fx-font-size: 12.0;
-    -fx-font-family: "Arial";
-}
-
 .text-area:focused, text-area:pressed {
     -fx-background-color: #48484A;
     -fx-border-color: #5E5CE6;
     -fx-text-fill: #F2F2F7;
+}
+
+.text-area .content {
+    -fx-background-color: #48484A46;
+    -fx-background-radius: 5.0;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .content {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .scroll-bar:horizontal, 
+.text-area .scroll-pane .scroll-bar:vertical {
+    -fx-background-color: #48484A46;
+}
+
+.text-area .scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #8E8E93;
+}
+
+.text-area .scroll-pane .scroll-bar:hover .thumb {
+    -fx-background-color: #8E8E9346;
+}
+
+.text-area .scroll-pane .scroll-bar:pressed .thumb {
+    -fx-background-color: #8E8E9356;
 }
 
 /* Tablas */
@@ -284,6 +310,29 @@ table-view .corner {
     -fx-background-color: #0A84FF;
     -fx-background-radius: 5.0;
     -fx-background-insets: 2, 2, 2;
+}
+
+.combo-box .list-cell {
+    
+}
+
+.combo-box .text-input {
+    
+}
+
+.combo-box .combo-box-popup .list-view, .combo-box .combo-box-popup .list-cell{
+    -fx-background-color: #48484A46;
+    -fx-background-radius: 5.0;
+    -fx-border-color: #8E8E93;
+    -fx-border-radius: 5.0;
+    -fx-font-family: "Arial";
+    -fx-font-size: 12.0;
+}
+
+/* Date Picker */
+
+.date-picker {
+    
 }
 
 /* Fondo */
