@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="569.0" prefWidth="790.0" styleClass="backgroundDark" stylesheets="@../assets/resources/KinalStoreCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pauloalvarez.controller.MenuInventarioController">
+<AnchorPane id="AnchorPane" prefHeight="462.0" prefWidth="790.0" styleClass="backgroundDark" stylesheets="@../assets/resources/KinalStoreCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pauloalvarez.controller.MenuInventarioController">
    <children>
       <Pane layoutX="10.0" layoutY="10.0" maxHeight="90.0" maxWidth="790.0" prefHeight="90.0" prefWidth="790.0" styleClass="backgroundMid" stylesheets="@../assets/resources/KinalStoreCSS.css" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-2.0">
          <children>
@@ -72,9 +72,9 @@
             </Button>
          </children>
       </Pane>
-      <Pane layoutX="27.0" layoutY="109.0" prefHeight="433.0" prefWidth="736.0" styleClass="innerPane">
+      <Pane layoutX="27.0" layoutY="109.0" prefHeight="433.0" prefWidth="736.0" styleClass="innerPane" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="108.0">
          <children>
-            <TableView layoutX="27.0" layoutY="146.0" prefHeight="260.0" prefWidth="682.0">
+            <TableView layoutX="27.0" layoutY="27.0" prefHeight="270.0" prefWidth="431.0">
                <columns>
                   <TableColumn prefWidth="50.0" text="ID" />
                   <TableColumn prefWidth="100.0" text="Descripción" />
@@ -94,17 +94,21 @@
                   </TableColumn>
                </columns>
             </TableView>
-            <GridPane layoutX="27.0" layoutY="35.0" prefHeight="90.0" prefWidth="399.0">
+            <GridPane layoutX="478.0" layoutY="27.0" prefHeight="270.0" prefWidth="231.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.0" minWidth="10.0" prefWidth="69.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="137.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="109.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="84.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="10.0" prefWidth="91.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="ID:" textFill="#f2f2f7" GridPane.halignment="RIGHT">
@@ -112,47 +116,47 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Categoría:" textFill="#f2f2f7" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Categoría:" textFill="#f2f2f7" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Proveedor:" textFill="#f2f2f7" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Proveedor:" textFill="#f2f2f7" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Precio:" textFill="#f2f2f7" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Precio:" textFill="#f2f2f7" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Precio Mayor:" textFill="#f2f2f7" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Precio Mayor:" textFill="#f2f2f7" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Cant. Existencia:" textFill="#f2f2f7" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Cant. Existencia:" textFill="#f2f2f7" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
                   <TextField disable="true" GridPane.columnIndex="1" />
-                  <TextField disable="true" GridPane.columnIndex="3" />
-                  <TextField disable="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <TextField disable="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                  <ComboBox disable="true" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <ComboBox disable="true" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField disable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ComboBox disable="true" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ComboBox disable="true" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Descripción:" textFill="#f2f2f7" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextArea disable="true" maxWidth="140.0" prefHeight="90.0" prefWidth="140.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" GridPane.rowSpan="3" />
                </children>
             </GridPane>
-            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="494.0" layoutY="15.0" nodeOrientation="LEFT_TO_RIGHT" text="Descripción:" textFill="#f2f2f7">
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </Label>
-            <TextArea disable="true" layoutX="492.0" layoutY="35.0" prefHeight="90.0" prefWidth="217.0" styleClass="text-area" wrapText="true" />
          </children></Pane>
-      <HBox layoutX="325.0" layoutY="97.0" prefHeight="21.0" prefWidth="140.0" styleClass="menuChangePane">
+      <HBox layoutX="325.0" layoutY="97.0" prefHeight="21.0" prefWidth="140.0" styleClass="menuChangePane" AnchorPane.topAnchor="97.0">
          <children>
             <Label minHeight="20.0" prefHeight="24.0" prefWidth="70.0" styleClass="menuChangeTile" text="Productos" textAlignment="CENTER" />
             <Button fx:id="cambiarSubMenu" mnemonicParsing="false" onAction="#cambiarMenu" prefHeight="21.0" prefWidth="70.0" styleClass="menuChangeButton" text="Categorías" />

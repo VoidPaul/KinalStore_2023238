@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="569.0" prefWidth="790.0" styleClass="backgroundDark" stylesheets="@../assets/resources/KinalStoreCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pauloalvarez.controller.MenuEmpleadosController">
+<AnchorPane id="AnchorPane" prefHeight="402.0" prefWidth="790.0" styleClass="backgroundDark" stylesheets="@../assets/resources/KinalStoreCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pauloalvarez.controller.MenuEmpleadosController">
    <children>
       <Pane layoutX="10.0" layoutY="10.0" maxHeight="90.0" maxWidth="790.0" prefHeight="90.0" prefWidth="790.0" styleClass="backgroundMid" stylesheets="@../assets/resources/KinalStoreCSS.css" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-2.0">
          <children>
@@ -71,12 +71,12 @@
             </Button>
          </children>
       </Pane>
-      <Pane layoutX="27.0" layoutY="109.0" prefHeight="433.0" prefWidth="736.0" styleClass="innerPane">
+      <Pane layoutX="27.0" layoutY="109.0" prefHeight="433.0" prefWidth="736.0" styleClass="innerPane" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="108.0">
          <children>
-            <GridPane layoutX="509.0" layoutY="112.0">
+            <GridPane layoutX="515.0" layoutY="27.0" maxHeight="210.0" maxWidth="194.0" minHeight="210.0" prefHeight="210.0" prefWidth="194.0">
               <columnConstraints>
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="57.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="147.0" minWidth="10.0" prefWidth="143.0" />
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="54.0" minWidth="10.0" prefWidth="54.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -137,11 +137,11 @@
                   </Label>
                </children>
             </GridPane>
-            <TableView layoutX="27.0" layoutY="27.0" prefHeight="379.0" prefWidth="473.0">
+            <TableView layoutX="27.0" layoutY="27.0" prefHeight="210.0" prefWidth="473.0">
               <columns>
                 <TableColumn prefWidth="50.0" text="ID" />
                 <TableColumn text="Nombres" />
-                  <TableColumn prefWidth="75.0" text="Apellidos" />
+                  <TableColumn text="Apellidos" />
                   <TableColumn prefWidth="60.0" text="Sueldo" />
                   <TableColumn prefWidth="100.0" text="Dirección" />
                   <TableColumn prefWidth="60.0" text="Turno" />
@@ -149,10 +149,10 @@
               </columns>
             </TableView>
          </children></Pane>
-      <HBox layoutX="331.0" layoutY="97.0" prefHeight="21.0" prefWidth="128.0" styleClass="menuChangePane">
+      <HBox layoutX="331.0" layoutY="97.0" prefHeight="21.0" prefWidth="128.0" styleClass="menuChangePane" AnchorPane.topAnchor="97.0">
          <children>
             <Label minHeight="20.0" prefHeight="24.0" prefWidth="67.0" styleClass="menuChangeTile" text="Empleados" textAlignment="CENTER" />
-            <Button fx:id="cambiarSubMenu" mnemonicParsing="false" onAction="#cambiarMenu" prefHeight="20.0" prefWidth="60.0" styleClass="menuChangeButton" text="Puestos" />
+            <Button fx:id="cambiarSubMenu" mnemonicParsing="false" onAction="#cambiarMenu" prefHeight="20.0" prefWidth="59.0" styleClass="menuChangeButton" text="Puestos" />
          </children>
       </HBox>
    </children>

@@ -165,35 +165,6 @@ public class MenuClientesController implements Initializable {
         }
     }
 
-    public void guardar() {
-        Cliente registro = new Cliente();
-        registro.setClienteID(Integer.parseInt(txtCodigoC.getText()));
-        registro.setNITCliente(txtNITC.getText());
-        registro.setNombresCliente(txtNombreC.getText());
-        registro.setApellidosCliente(txtApellidoC.getText());
-        registro.setDireccionCliente(txtDireccionC.getText());
-        registro.setTelefonoCliente(txtTelefonoC.getText());
-        registro.setEmailCliente(txtEmailC.getText());
-
-        try {
-            PreparedStatement procedimiento = Conexion.getInstancia().getConexion().prepareCall("{call sp_agregarCliente(?, ?, ?, ?, ?, ?, ?)}");
-            procedimiento.setInt(1, registro.getClienteID());
-            procedimiento.setString(2, registro.getNITCliente());
-            procedimiento.setString(3, registro.getNombresCliente());
-            procedimiento.setString(4, registro.getApellidosCliente());
-            procedimiento.setString(5, registro.getDireccionCliente());
-            procedimiento.setString(6, registro.getTelefonoCliente());
-            procedimiento.setString(7, registro.getEmailCliente());
-            procedimiento.execute();
-            listaClientes.add(registro);
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
     public void eliminar() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
@@ -267,6 +238,39 @@ public class MenuClientesController implements Initializable {
         }
     }
     
+    public void reporte() {
+        // Agregaré una función distinta a este botón.
+    }
+
+    public void guardar() {
+        Cliente registro = new Cliente();
+        registro.setClienteID(Integer.parseInt(txtCodigoC.getText()));
+        registro.setNITCliente(txtNITC.getText());
+        registro.setNombresCliente(txtNombreC.getText());
+        registro.setApellidosCliente(txtApellidoC.getText());
+        registro.setDireccionCliente(txtDireccionC.getText());
+        registro.setTelefonoCliente(txtTelefonoC.getText());
+        registro.setEmailCliente(txtEmailC.getText());
+
+        try {
+            PreparedStatement procedimiento = Conexion.getInstancia().getConexion().prepareCall("{call sp_agregarCliente(?, ?, ?, ?, ?, ?, ?)}");
+            procedimiento.setInt(1, registro.getClienteID());
+            procedimiento.setString(2, registro.getNITCliente());
+            procedimiento.setString(3, registro.getNombresCliente());
+            procedimiento.setString(4, registro.getApellidosCliente());
+            procedimiento.setString(5, registro.getDireccionCliente());
+            procedimiento.setString(6, registro.getTelefonoCliente());
+            procedimiento.setString(7, registro.getEmailCliente());
+            procedimiento.execute();
+            listaClientes.add(registro);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public void actualizar() {
         try {
             PreparedStatement procedimiento = Conexion.getInstancia().getConexion().prepareCall("{call sp_editarCliente(?, ?, ?, ?, ?, ?, ?)}");
@@ -293,10 +297,6 @@ public class MenuClientesController implements Initializable {
         }
     }
     
-    public void reporte() {
-        cargarDatos();
-    }
-
     public void desactivarControles() {
         txtCodigoC.setDisable(true);
         txtNITC.setDisable(true);

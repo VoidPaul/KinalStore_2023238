@@ -16,8 +16,8 @@ public class Conexion {
     public Conexion() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            // conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/dbkinalstore?useSSL=false&serverTimezone=UTC", "2023238_IN5BV", "abc123!!");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbkinalstore?useSSL=false&serverTimezone=UTC", "root", "RootKinal2024$");
+            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/dbkinalstore?useSSL=false&serverTimezone=UTC", "2023238_IN5BV", "abc123!!");
+            // conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbkinalstore?useSSL=false&serverTimezone=UTC", "root", "RootKinal2024$");
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         } catch (InstantiationException | IllegalAccessException | SQLException ex) {
