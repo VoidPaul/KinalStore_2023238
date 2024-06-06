@@ -38,13 +38,12 @@ public class Main extends Application {
         
         this.escenarioPrincipal = escenarioPrincipal;
         this.escenarioPrincipal.setResizable(false);
-        this.escenarioPrincipal.setTitle("Kinal Store");
         this.escenarioPrincipal.getIcons().add(new Image("/org/pauloalvarez/assets/images/KinalStoreLogoRedondo.png"));
         menuPrincipalView();
         escenarioPrincipal.show();
     }
     
-     public Initializable cambiarEscena(String fxmlName) throws Exception {
+     public Initializable cambiarEscena(String fxmlName, String nombreEscena) throws Exception {
         Initializable resultado;
         FXMLLoader loader = new FXMLLoader();
 
@@ -54,6 +53,7 @@ public class Main extends Application {
 
         escena = new Scene(loader.load(file));
         escenarioPrincipal.setScene(escena);
+        escenarioPrincipal.setTitle(nombreEscena);
         escenarioPrincipal.sizeToScene();
 
         resultado = (Initializable) loader.getController();
@@ -63,7 +63,7 @@ public class Main extends Application {
 
     public void menuPrincipalView() {
         try {
-            MenuPrincipalController menuPrincipal = (MenuPrincipalController) cambiarEscena("PrincipalView.fxml");
+            MenuPrincipalController menuPrincipal = (MenuPrincipalController) cambiarEscena("PrincipalView.fxml", "Kinal Store");
             menuPrincipal.setEscenarioPrincipal(this);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -72,7 +72,7 @@ public class Main extends Application {
     
     public void menuProveedorView() {
         try {
-            MenuProveedoresController menuProveedor = (MenuProveedoresController) cambiarEscena("ProveedorView.fxml");
+            MenuProveedoresController menuProveedor = (MenuProveedoresController) cambiarEscena("ProveedorView.fxml", "Proveedores - Kinal Store");
             menuProveedor.setEscenarioPrincipal(this);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -81,7 +81,7 @@ public class Main extends Application {
     
     public void menuProveedorContacto() {
         try {
-            MenuProveedorContactoController menuProveedorContacto = (MenuProveedorContactoController) cambiarEscena("ProveedorContactoView.fxml");
+            MenuProveedorContactoController menuProveedorContacto = (MenuProveedorContactoController) cambiarEscena("ProveedorContactoView.fxml", "Contacto(s) - Kinal Store");
             menuProveedorContacto.setEscenarioPrincipal(this);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -90,7 +90,7 @@ public class Main extends Application {
     
     public void menuEmpleadoView() {
         try {
-            MenuEmpleadosController menuEmpleado = (MenuEmpleadosController) cambiarEscena("EmpleadoView.fxml");
+            MenuEmpleadosController menuEmpleado = (MenuEmpleadosController) cambiarEscena("EmpleadoView.fxml", "Empleados - Kinal Store");
             menuEmpleado.setEscenarioPrincipal(this);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -99,7 +99,7 @@ public class Main extends Application {
     
     public void menuTipoEmpleado() {
         try {
-            MenuTipoEmpleadoController menuTipoEmpleado = (MenuTipoEmpleadoController) cambiarEscena("TipoEmpleadoView.fxml");
+            MenuTipoEmpleadoController menuTipoEmpleado = (MenuTipoEmpleadoController) cambiarEscena("TipoEmpleadoView.fxml", "Puestos - Kinal Store");
             menuTipoEmpleado.setEscenarioPrincipal(this);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -108,7 +108,7 @@ public class Main extends Application {
 
     public void menuClientesView() {
         try {
-            MenuClientesController menuCliente = (MenuClientesController) cambiarEscena("ClienteView.fxml");
+            MenuClientesController menuCliente = (MenuClientesController) cambiarEscena("ClienteView.fxml", "Clientes - Kinal Store");
             menuCliente.setEscenarioPrincipal(this);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -117,7 +117,7 @@ public class Main extends Application {
     
     public void menuComprasView() {
         try {
-            MenuComprasController menuCompras = (MenuComprasController) cambiarEscena("ComprasView.fxml");
+            MenuComprasController menuCompras = (MenuComprasController) cambiarEscena("ComprasView.fxml", "Compras - Kinal Store");
             menuCompras.setEscenarioPrincipal(this);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -126,7 +126,7 @@ public class Main extends Application {
     
     public void menuFacturaView() {
         try {
-            MenuFacturasController menuFactura = (MenuFacturasController) cambiarEscena("FacturaView.fxml");
+            MenuFacturasController menuFactura = (MenuFacturasController) cambiarEscena("FacturaView.fxml", "Facturas - Kinal Store");
             menuFactura.setEscenarioPrincipal(this);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -135,7 +135,7 @@ public class Main extends Application {
     
     public void menuInventarioView() {
         try {
-            MenuInventarioController menuInventario = (MenuInventarioController) cambiarEscena("InventarioView.fxml");
+            MenuInventarioController menuInventario = (MenuInventarioController) cambiarEscena("InventarioView.fxml", "Inventario - Kinal Store");
             menuInventario.setEscenarioPrincipal(this);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -144,7 +144,7 @@ public class Main extends Application {
     
     public void menuTipoProductoView() {
         try {
-            MenuTipoProductoController menuTipoProducto = (MenuTipoProductoController) cambiarEscena("TipoProductoView.fxml");
+            MenuTipoProductoController menuTipoProducto = (MenuTipoProductoController) cambiarEscena("TipoProductoView.fxml", "Categorías - Kinal Store");
             menuTipoProducto.setEscenarioPrincipal(this);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -161,7 +161,7 @@ public class Main extends Application {
     
     public void menuProgramadorView() {
         try {
-            MenuProgramadorController menuProgramador = (MenuProgramadorController) cambiarEscena("ProgramadorView.fxml");
+            MenuProgramadorController menuProgramador = (MenuProgramadorController) cambiarEscena("ProgramadorView.fxml", "Kinal Store");
             menuProgramador.setEscenarioPrincipal(this);
         } catch (Exception ex) {
             ex.printStackTrace();
