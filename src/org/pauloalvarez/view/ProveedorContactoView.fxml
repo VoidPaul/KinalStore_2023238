@@ -23,7 +23,7 @@
          <children>
             <HBox alignment="CENTER" layoutX="1.0" prefHeight="90.0" prefWidth="790.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Agregar" textAlignment="CENTER">
+                  <Button fx:id="btnAgregarP" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Agregar" textAlignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
