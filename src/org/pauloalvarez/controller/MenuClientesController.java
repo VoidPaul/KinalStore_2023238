@@ -31,12 +31,22 @@ public class MenuClientesController implements Initializable {
 
     private Main escenarioPrincipal;
 
-    private enum operaciones {AGREGAR, EDITAR, ACTUALIZAR, CANCELAR, ELIMINAR, NINGUNO}
+    private enum operaciones {
+        AGREGAR, ACTUALIZAR, NINGUNO
+    }
     private operaciones tipoDeOperaciones = operaciones.NINGUNO;
     private ObservableList<Cliente> listaClientes = getClientes();
 
     @FXML
     private Button btnRegresar;
+    @FXML
+    private Button btnAgregarC;
+    @FXML
+    private Button btnEditarC;
+    @FXML
+    private Button btnEliminarC;
+    @FXML
+    private Button btnReporteC;
     @FXML
     private TextField txtCodigoC;
     @FXML
@@ -67,14 +77,7 @@ public class MenuClientesController implements Initializable {
     private TableColumn colTelefonoC;
     @FXML
     private TableColumn colEmailC;
-    @FXML
-    private Button btnAgregarC;
-    @FXML
-    private Button btnEditarC;
-    @FXML
-    private Button btnEliminarC;
-    @FXML
-    private Button btnReporteC;
+
     @FXML
     private ImageView imgAgregarC;
     @FXML
@@ -87,12 +90,19 @@ public class MenuClientesController implements Initializable {
         cargarDatos();
     }
 
+    public Main getEscenarioPrincipal() {
+        return escenarioPrincipal;
+    }
+
+    public void setEscenarioPrincipal(Main escenarioPrincipal) {
+        this.escenarioPrincipal = escenarioPrincipal;
+    }
+
     public void cargarDatos() {
         tblClientes.setItems(getClientes());
         colCodigoC.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("codigoCliente"));
         colNITC.setCellValueFactory(new PropertyValueFactory<Cliente, String>("NITCliente"));
         colNombreC.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nombresCliente"));
-        
         colApellidoC.setCellValueFactory(new PropertyValueFactory<Cliente, String>("apellidosCliente"));
         colDireccionC.setCellValueFactory(new PropertyValueFactory<Cliente, String>("direccionCliente"));
         colTelefonoC.setCellValueFactory(new PropertyValueFactory<Cliente, String>("telefonoCliente"));
@@ -100,7 +110,7 @@ public class MenuClientesController implements Initializable {
     }
 
     public void seleccionarElemento() {
-        txtCodigoC.setText(String.valueOf(((Cliente) tblClientes.getSelectionModel().getSelectedItem()).getClienteID()));
+        txtCodigoC.setText(String.valueOf(((Cliente) tblClientes.getSelectionModel().getSelectedItem()).getCodigoCliente()));
         txtNITC.setText(((Cliente) tblClientes.getSelectionModel().getSelectedItem()).getNITCliente());
         txtNombreC.setText(((Cliente) tblClientes.getSelectionModel().getSelectedItem()).getNombresCliente());
         txtApellidoC.setText(((Cliente) tblClientes.getSelectionModel().getSelectedItem()).getApellidosCliente());
@@ -134,7 +144,7 @@ public class MenuClientesController implements Initializable {
         }
 
         listaClientes = FXCollections.observableArrayList(lista);
-        
+
         return listaClientes;
     }
 
@@ -168,8 +178,8 @@ public class MenuClientesController implements Initializable {
     public void eliminar() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
-                limpiarControles();
                 desactivarControles();
+                limpiarControles();
                 btnAgregarC.setText("Agregar");
                 btnAgregarC.setDisable(false);
                 imgAgregarC.setImage(new Image("/org/pauloalvarez/assets/images/selecPersonaMas.png"));
@@ -188,7 +198,7 @@ public class MenuClientesController implements Initializable {
                     if (respuesta == JOptionPane.YES_NO_OPTION) {
                         try {
                             PreparedStatement procedimiento = Conexion.getInstancia().getConexion().prepareCall("{call sp_eliminarCliente(?)}");
-                            procedimiento.setInt(1, ((Cliente) tblClientes.getSelectionModel().getSelectedItem()).getClienteID());
+                            procedimiento.setInt(1, ((Cliente) tblClientes.getSelectionModel().getSelectedItem()).getCodigoCliente());
                             procedimiento.execute();
                             listaClientes.remove((Cliente) tblClientes.getSelectionModel().getSelectedItem());
                         } catch (SQLException ex) {
@@ -200,11 +210,10 @@ public class MenuClientesController implements Initializable {
                         JOptionPane.showMessageDialog(null, "Debe de Seleccionar lo que quiere Eliminar");
                     }
                 }
-
                 break;
         }
     }
-    
+
     public void editar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
@@ -215,8 +224,8 @@ public class MenuClientesController implements Initializable {
                     imgEliminarC.setImage(new Image("/org/pauloalvarez/assets/images/basura.png"));
                     btnAgregarC.setDisable(true);
                     btnReporteC.setDisable(true);
-                    activarControles();
                     txtCodigoC.setEditable(false);
+                    activarControles();
                     tipoDeOperaciones = operaciones.ACTUALIZAR;
                 } else {
                     JOptionPane.showMessageDialog(null, "Debe Seleccionar lo que quiere Editar.");
@@ -224,37 +233,38 @@ public class MenuClientesController implements Initializable {
                 break;
             case ACTUALIZAR:
                 actualizar();
+                desactivarControles();
+                limpiarControles();
                 btnEditarC.setText("Editar");
                 imgEditarC.setImage(new Image("/org/pauloalvarez/assets/images/selecEditar.png"));
                 btnEliminarC.setText("Reporte");
                 imgEliminarC.setImage(new Image("/org/pauloalvarez/assets/images/selecPersonaMenos.png"));
                 btnAgregarC.setDisable(false);
                 btnReporteC.setDisable(false);
-                limpiarControles();
-                desactivarControles();
                 tipoDeOperaciones = operaciones.NINGUNO;
                 cargarDatos();
                 break;
         }
     }
-    
+
     public void reporte() {
         // Agregaré una función distinta a este botón.
     }
 
     public void guardar() {
-        Cliente registro = new Cliente();
-        registro.setClienteID(Integer.parseInt(txtCodigoC.getText()));
-        registro.setNITCliente(txtNITC.getText());
-        registro.setNombresCliente(txtNombreC.getText());
-        registro.setApellidosCliente(txtApellidoC.getText());
-        registro.setDireccionCliente(txtDireccionC.getText());
-        registro.setTelefonoCliente(txtTelefonoC.getText());
-        registro.setEmailCliente(txtEmailC.getText());
-
         try {
+            
+            Cliente registro = new Cliente();
+            registro.setCodigoCliente(Integer.parseInt(txtCodigoC.getText()));
+            registro.setNITCliente(txtNITC.getText());
+            registro.setNombresCliente(txtNombreC.getText());
+            registro.setApellidosCliente(txtApellidoC.getText());
+            registro.setDireccionCliente(txtDireccionC.getText());
+            registro.setTelefonoCliente(txtTelefonoC.getText());
+            registro.setEmailCliente(txtEmailC.getText());
+
             PreparedStatement procedimiento = Conexion.getInstancia().getConexion().prepareCall("{call sp_agregarCliente(?, ?, ?, ?, ?, ?, ?)}");
-            procedimiento.setInt(1, registro.getClienteID());
+            procedimiento.setInt(1, registro.getCodigoCliente());
             procedimiento.setString(2, registro.getNITCliente());
             procedimiento.setString(3, registro.getNombresCliente());
             procedimiento.setString(4, registro.getApellidosCliente());
@@ -270,19 +280,21 @@ public class MenuClientesController implements Initializable {
             ex.printStackTrace();
         }
     }
-    
+
     public void actualizar() {
         try {
-            PreparedStatement procedimiento = Conexion.getInstancia().getConexion().prepareCall("{call sp_editarCliente(?, ?, ?, ?, ?, ?, ?)}");
+            
             Cliente registro = (Cliente) tblClientes.getSelectionModel().getSelectedItem();
-            registro.setClienteID(Integer.parseInt( txtCodigoC.getText()));
+            registro.setCodigoCliente(Integer.parseInt(txtCodigoC.getText()));
             registro.setNITCliente(txtNITC.getText());
             registro.setNombresCliente(txtNombreC.getText());
             registro.setApellidosCliente(txtApellidoC.getText());
             registro.setDireccionCliente(txtDireccionC.getText());
             registro.setTelefonoCliente(txtTelefonoC.getText());
             registro.setEmailCliente(txtEmailC.getText());
-            procedimiento.setInt(1, registro.getClienteID());
+            
+            PreparedStatement procedimiento = Conexion.getInstancia().getConexion().prepareCall("{call sp_editarCliente(?, ?, ?, ?, ?, ?, ?)}");
+            procedimiento.setInt(1, registro.getCodigoCliente());
             procedimiento.setString(2, registro.getNITCliente());
             procedimiento.setString(3, registro.getNombresCliente());
             procedimiento.setString(4, registro.getApellidosCliente());
@@ -290,21 +302,12 @@ public class MenuClientesController implements Initializable {
             procedimiento.setString(6, registro.getTelefonoCliente());
             procedimiento.setString(7, registro.getEmailCliente());
             procedimiento.execute();
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }
-    
-    public void desactivarControles() {
-        txtCodigoC.setDisable(true);
-        txtNITC.setDisable(true);
-        txtNombreC.setDisable(true);
-        txtApellidoC.setDisable(true);
-        txtDireccionC.setDisable(true);
-        txtTelefonoC.setDisable(true);
-        txtEmailC.setDisable(true);
     }
 
     public void activarControles() {
@@ -317,6 +320,16 @@ public class MenuClientesController implements Initializable {
         txtEmailC.setDisable(false);
     }
 
+    public void desactivarControles() {
+        txtCodigoC.setDisable(true);
+        txtNITC.setDisable(true);
+        txtNombreC.setDisable(true);
+        txtApellidoC.setDisable(true);
+        txtDireccionC.setDisable(true);
+        txtTelefonoC.setDisable(true);
+        txtEmailC.setDisable(true);
+    }
+
     public void limpiarControles() {
         txtCodigoC.clear();
         txtNITC.clear();
@@ -325,14 +338,6 @@ public class MenuClientesController implements Initializable {
         txtDireccionC.clear();
         txtTelefonoC.clear();
         txtEmailC.clear();
-    }
-
-    public Main getEscenarioPrincipal() {
-        return escenarioPrincipal;
-    }
-
-    public void setEscenarioPrincipal(Main escenarioPrincipal) {
-        this.escenarioPrincipal = escenarioPrincipal;
     }
 
     @FXML

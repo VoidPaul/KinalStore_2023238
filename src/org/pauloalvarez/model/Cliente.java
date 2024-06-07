@@ -27,11 +27,11 @@ public class Cliente {
         this.emailCliente = emailCliente;
     }
 
-    public int getClienteID() {
+    public int getCodigoCliente() {
         return codigoCliente;
     }
 
-    public void setClienteID(int clienteID) {
+    public void setCodigoCliente(int clienteID) {
         this.codigoCliente = clienteID;
     }
 
