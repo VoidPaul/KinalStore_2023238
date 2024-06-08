@@ -1,19 +1,23 @@
 package org.pauloalvarez.controller;
 
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import org.pauloalvarez.database.Conexion;
 import org.pauloalvarez.model.EmailProveedor;
 import org.pauloalvarez.model.TelProveedor;
 import org.pauloalvarez.system.Main;
@@ -116,27 +120,55 @@ public class MenuProveedorContactoController implements Initializable {
     }
     
     public ObservableList<TelProveedor> getTelefonoProveedores() {
-        ArrayList<TelProveedor> listaTelefonos = new ArrayList<>();
+        ArrayList<TelProveedor> arrListaTelefonos = new ArrayList<>();
         
         try {
+            PreparedStatement procedimiento = Conexion.getInstancia().getConexion().prepareCall("{call sp_reporteTelProveedor()}");
+            ResultSet resultado = procedimiento.executeQuery();
+            
+            while (resultado.next()) {
+                listaTelefonos.add(new TelProveedor(resultado.getInt(""),
+                    resultado.getString(""),
+                    resultado.getString(""),
+                    resultado.getString(""),
+                    resultado.getInt("")
+                ));
+            }
             
         } catch (SQLException ex) {
-            
+            ex.printStackTrace();
         } catch (Exception ex) {
-            
+            ex.printStackTrace();
         }
+        
+        listaTelefonos = FXCollections.observableArrayList(listaTelefonos);
+        return listaTelefonos;
     }
     
     public ObservableList<EmailProveedor> getEmailProveedores() {
-        ArrayList<EmailProveedor> listaEmails = new ArrayList<>();
+        ArrayList<EmailProveedor> arrListaEmails = new ArrayList<>();
         
         try {
+            PreparedStatement procedimiento = Conexion.getInstancia().getConexion().prepareCall("{call sp_reporteEmailProveedor()}");
+            ResultSet resultado = procedimiento.executeQuery();
+            
+            while (resultado.next()) {
+                listaEmails.add(new EmailProveedor(resultado.getInt(""),
+                    resultado.getString(""),
+                    resultado.getString(""),
+                    resultado.getInt("")
+                ));
+            }
             
         } catch (SQLException ex) {
             
         } catch (Exception ex) {
             
         }
+        
+        listaEmails = FXCollections.observableArrayList(arrListaEmails);
+        
+        return listaEmails;
     }
     
     public void agregar() {

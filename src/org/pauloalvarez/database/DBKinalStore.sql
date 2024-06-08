@@ -221,7 +221,7 @@ delimiter $$
 create procedure sp_eliminarTelProveedor(in codigoTelefonoProveedor int)
 begin
 	delete from TelProveedor
-    where codigoTelProveedor = _codigoTelProveedor;
+    where codigoTelelefonoProveedor = _codigoTelefonoProveedor;
 end$$
 delimiter;
 
@@ -237,14 +237,14 @@ begin
     numeroSecundario = _numeroSecundario,
     observaciones = _observaciones,
     codigoProveedor = _codigoProveedor
-    where codigoTelProveedor = codigoTelProveedor;
+    where codigoTelefonoProveedor = _codigoTelefonoProveedor;
 end$$
 delimiter;
 
 delimiter $$
 create procedure sp_reporteTelProveedor()
 begin
-	select TP.codigoTelProveedor as 'ID',
+	select TP.codigoTelefonoProveedor as 'ID',
     TP.numeroPrincipal as 'No. Principal',
     TP.numeroSecundario as 'No. Secundario',
     TP.observaciones as 'Observaciones',
