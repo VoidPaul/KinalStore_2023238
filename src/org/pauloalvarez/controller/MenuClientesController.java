@@ -22,7 +22,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javax.swing.JOptionPane;
 import org.pauloalvarez.database.Conexion;
 import org.pauloalvarez.model.Cliente;
 import org.pauloalvarez.system.Main;
@@ -34,6 +33,8 @@ import org.pauloalvarez.system.Main;
 public class MenuClientesController implements Initializable {
 
     private Main escenarioPrincipal;
+    
+    private Alert error = new Alert(AlertType.ERROR);
 
     private enum operaciones {
         AGREGAR, ACTUALIZAR, NINGUNO
@@ -81,7 +82,6 @@ public class MenuClientesController implements Initializable {
     private TableColumn colTelefonoC;
     @FXML
     private TableColumn colEmailC;
-
     @FXML
     private ImageView imgAgregarC;
     @FXML
@@ -143,8 +143,20 @@ public class MenuClientesController implements Initializable {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
+            
+            error.setTitle(null);
+            error.setHeaderText("Error con la Base de Datos");
+            error.setContentText("La base de datos retornó este error: " + String.valueOf(ex.getMessage()));
+            error.showAndWait();
+            
         } catch (Exception ex) {
             ex.printStackTrace();
+            
+            error.setTitle(null);
+            error.setHeaderText("Error con la Aplicación");
+            error.setContentText("La aplicación retornó este error: " + String.valueOf(ex.getMessage()));
+            error.showAndWait();
+            
         }
 
         listaClientes = FXCollections.observableArrayList(lista);
@@ -216,13 +228,13 @@ public class MenuClientesController implements Initializable {
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }
-                    } else {
+                    }
+                } else {
                         Alert informacion = new Alert(AlertType.INFORMATION);
                         informacion.setTitle(null);
                         informacion.setHeaderText("Eliminación Fallida");
                         informacion.setContentText("Debe Seleccionar lo que quiere Editar.");
                         informacion.showAndWait();
-                    }
                 }
                 break;
         }
@@ -243,6 +255,7 @@ public class MenuClientesController implements Initializable {
                     tipoDeOperaciones = operaciones.ACTUALIZAR;
                 } else {
                     Alert informacion = new Alert(AlertType.INFORMATION);
+                    
                     informacion.setTitle(null);
                     informacion.setHeaderText("Edición Fallida");
                     informacion.setContentText("Debe Seleccionar lo que quiere Editar.");
@@ -255,7 +268,7 @@ public class MenuClientesController implements Initializable {
                 limpiarControles();
                 btnEditarC.setText("Editar");
                 imgEditarC.setImage(new Image("/org/pauloalvarez/assets/images/selecEditar.png"));
-                btnEliminarC.setText("Reporte");
+                btnEliminarC.setText("Eliminar");
                 imgEliminarC.setImage(new Image("/org/pauloalvarez/assets/images/selecPersonaMenos.png"));
                 btnAgregarC.setDisable(false);
                 btnReporteC.setDisable(false);

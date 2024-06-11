@@ -11,6 +11,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -29,6 +31,8 @@ import org.pauloalvarez.system.Main;
 public class MenuProveedorContactoController implements Initializable {
 
     private Main escenarioPrincipal;
+    
+    private Alert error = new Alert(AlertType.ERROR);
     
     private enum operaciones {
         AGREGAR, ACTUALIZAR, NINGUNO
@@ -143,11 +147,24 @@ public class MenuProveedorContactoController implements Initializable {
             
         } catch (SQLException ex) {
             ex.printStackTrace();
+            
+            error.setTitle(null);
+            error.setHeaderText("Error con la Base de Datos");
+            error.setContentText("La base de datos retornó este error: " + ex.getMessage());
+            error.showAndWait();
+            
         } catch (Exception ex) {
             ex.printStackTrace();
+            
+            error.setTitle(null);
+            error.setHeaderText("Error con la Aplicación");
+            error.setContentText("La aplicación retornó este error: " + ex.getMessage());
+            error.showAndWait();
+            
         }
         
         listaTelefonos = FXCollections.observableArrayList(listaTelefonos);
+        
         return listaTelefonos;
     }
     
@@ -167,8 +184,20 @@ public class MenuProveedorContactoController implements Initializable {
             }
             
         } catch (SQLException ex) {
+            ex.printStackTrace();
+            
+            error.setTitle(null);
+            error.setHeaderText("Error con la Base de Datos");
+            error.setContentText("La base de datos retornó este error: " + ex.getMessage());
+            error.showAndWait();
             
         } catch (Exception ex) {
+            ex.printStackTrace();
+            
+            error.setTitle(null);
+            error.setHeaderText("Error con la Aplicación");
+            error.setContentText("La aplicación retornó este error: " + ex.getMessage());
+            error.showAndWait();
             
         }
         
