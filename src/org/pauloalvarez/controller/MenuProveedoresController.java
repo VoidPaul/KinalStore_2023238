@@ -5,13 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -200,9 +203,31 @@ public class MenuProveedoresController implements Initializable {
                 break;
             default:
                 if (tblProveedores.getSelectionModel().getSelectedItem() != null) {
-                    
+                    Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+                    confirmacion.setTitle(null);
+                    confirmacion.setHeaderText("Advertencia");
+                    confirmacion.setContentText("¿Quiere Eliminar el Registro?");
+
+                    Optional<ButtonType> result = confirmacion.showAndWait();
+
+                    if (result.isPresent() && result.get() == ButtonType.OK) {
+                        try {
+                            PreparedStatement procedimiento = Conexion.getInstancia().getConexion().prepareCall("{call sp_eliminarProveedor(?)}");
+                            procedimiento.setInt(1, ((Proveedor) tblProveedores.getSelectionModel().getSelectedItem()).getCodigoProveedor());
+                            procedimiento.execute();
+                            listaProveedores.remove((Proveedor) tblProveedores.getSelectionModel().getSelectedItem());
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    }
                 } else {
-                    
+                    Alert informacion = new Alert(Alert.AlertType.INFORMATION);
+                    informacion.setTitle(null);
+                    informacion.setHeaderText("Eliminación Fallida");
+                    informacion.setContentText("Debe Seleccionar lo que quiere Editar.");
+                    informacion.showAndWait();
                 }
                 break;
         }
@@ -222,7 +247,11 @@ public class MenuProveedoresController implements Initializable {
                     activarControles();
                     tipoDeOperaciones = operaciones.ACTUALIZAR;
                 } else {
-                    
+                    Alert informacion = new Alert(Alert.AlertType.INFORMATION);
+                    informacion.setTitle(null);
+                    informacion.setHeaderText("Edición Fallida");
+                    informacion.setContentText("Debe Seleccionar lo que quiere Editar.");
+                    informacion.showAndWait();
                 }
                 break;
             case ACTUALIZAR:
@@ -247,7 +276,7 @@ public class MenuProveedoresController implements Initializable {
 
     public void guardar() {
         try {
-            
+
             Proveedor registro = new Proveedor();
             registro.setCodigoProveedor(Integer.parseInt(txtCodigoP.getText()));
             registro.setNITProveedor(txtNITP.getText());
@@ -257,7 +286,7 @@ public class MenuProveedoresController implements Initializable {
             registro.setRazonSocial(txtRazonSocialP.getText());
             registro.setContactoPrincipal(txtContactoPrincipalP.getText());
             registro.setPaginaWeb(txtPaginaWebP.getText());
-            
+
             PreparedStatement procedimiento = Conexion.getInstancia().getConexion().prepareCall("{call sp_agregarProveedor(?, ?, ?, ?, ?, ?, ?, ?)}");
             procedimiento.setInt(1, registro.getCodigoProveedor());
             procedimiento.setString(2, registro.getNITProveedor());
@@ -269,7 +298,7 @@ public class MenuProveedoresController implements Initializable {
             procedimiento.setString(8, registro.getPaginaWeb());
             procedimiento.execute();
             listaProveedores.add(registro);
-            
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (Exception ex) {
@@ -279,7 +308,7 @@ public class MenuProveedoresController implements Initializable {
 
     public void actualizar() {
         try {
-            
+
             Proveedor registro = new Proveedor();
             registro.setCodigoProveedor(Integer.parseInt(txtCodigoP.getText()));
             registro.setNITProveedor(txtNITP.getText());
@@ -289,7 +318,7 @@ public class MenuProveedoresController implements Initializable {
             registro.setRazonSocial(txtRazonSocialP.getText());
             registro.setContactoPrincipal(txtContactoPrincipalP.getText());
             registro.setPaginaWeb(txtPaginaWebP.getText());
-            
+
             PreparedStatement procedimiento = Conexion.getInstancia().getConexion().prepareCall("{call sp_editarProveedor(?, ?, ?, ?, ?, ?, ?, ?)}");
             procedimiento.setInt(1, registro.getCodigoProveedor());
             procedimiento.setString(2, registro.getNITProveedor());
@@ -300,7 +329,7 @@ public class MenuProveedoresController implements Initializable {
             procedimiento.setString(7, registro.getContactoPrincipal());
             procedimiento.setString(8, registro.getPaginaWeb());
             procedimiento.execute();
-            
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (Exception ex) {

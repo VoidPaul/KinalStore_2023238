@@ -335,6 +335,26 @@ table-view .corner {
     
 }
 
+/* Alertas && Diálogos */
+.alert-pane {
+    -fx-background-color: #2C2C2E;
+    -fx-text-fill: #F2F2F7;
+}
+
+.dialog-pane {
+    -fx-background-color: #1C1C1E;
+    -fx-text-fill: #F2F2F7;
+}
+
+.dialog-pane .button {
+    -fx-background-color: #0A84FF;
+    -fx-text-fill: #F2F2F7;
+}
+
+.dialog-pane .header-panel .header-title {
+    -fx-text-fill: #F2F2F7;
+}
+
 /* Fondo */
 .backgroundClear {
     -fx-background-color: #48484A;

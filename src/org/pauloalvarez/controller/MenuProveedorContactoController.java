@@ -112,6 +112,12 @@ public class MenuProveedorContactoController implements Initializable {
     }
     
     public void cargarDatos() {
+        // Tabla Teléfonos
+        tblTelefonoProveedor.setItems(getTelefonoProveedores());
+        
+        
+        // Tabla Emails
+        tblEmailProveedor.setItems(getEmailProveedores());
         
     }
     

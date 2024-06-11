@@ -5,13 +5,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -193,9 +197,15 @@ public class MenuClientesController implements Initializable {
                 break;
             default:
                 if (tblClientes.getSelectionModel().getSelectedItem() != null) {
-                    int respuesta = JOptionPane.showConfirmDialog(null, "¿Quiere Eliminar el Registro?",
-                            "Eliminar Clientes", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                    if (respuesta == JOptionPane.YES_NO_OPTION) {
+
+                    Alert confirmacion = new Alert(AlertType.CONFIRMATION);
+                    confirmacion.setTitle(null);
+                    confirmacion.setHeaderText("Advertencia");
+                    confirmacion.setContentText("¿Quiere Eliminar el Registro?");
+
+                    Optional<ButtonType> result = confirmacion.showAndWait();
+
+                    if (result.isPresent() && result.get() == ButtonType.OK) {
                         try {
                             PreparedStatement procedimiento = Conexion.getInstancia().getConexion().prepareCall("{call sp_eliminarCliente(?)}");
                             procedimiento.setInt(1, ((Cliente) tblClientes.getSelectionModel().getSelectedItem()).getCodigoCliente());
@@ -207,7 +217,11 @@ public class MenuClientesController implements Initializable {
                             ex.printStackTrace();
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Debe de Seleccionar lo que quiere Eliminar");
+                        Alert informacion = new Alert(AlertType.INFORMATION);
+                        informacion.setTitle(null);
+                        informacion.setHeaderText("Eliminación Fallida");
+                        informacion.setContentText("Debe Seleccionar lo que quiere Editar.");
+                        informacion.showAndWait();
                     }
                 }
                 break;
@@ -228,7 +242,11 @@ public class MenuClientesController implements Initializable {
                     activarControles();
                     tipoDeOperaciones = operaciones.ACTUALIZAR;
                 } else {
-                    JOptionPane.showMessageDialog(null, "Debe Seleccionar lo que quiere Editar.");
+                    Alert informacion = new Alert(AlertType.INFORMATION);
+                    informacion.setTitle(null);
+                    informacion.setHeaderText("Edición Fallida");
+                    informacion.setContentText("Debe Seleccionar lo que quiere Editar.");
+                    informacion.showAndWait();
                 }
                 break;
             case ACTUALIZAR:
@@ -253,7 +271,7 @@ public class MenuClientesController implements Initializable {
 
     public void guardar() {
         try {
-            
+
             Cliente registro = new Cliente();
             registro.setCodigoCliente(Integer.parseInt(txtCodigoC.getText()));
             registro.setNITCliente(txtNITC.getText());
@@ -283,7 +301,7 @@ public class MenuClientesController implements Initializable {
 
     public void actualizar() {
         try {
-            
+
             Cliente registro = (Cliente) tblClientes.getSelectionModel().getSelectedItem();
             registro.setCodigoCliente(Integer.parseInt(txtCodigoC.getText()));
             registro.setNITCliente(txtNITC.getText());
@@ -292,7 +310,7 @@ public class MenuClientesController implements Initializable {
             registro.setDireccionCliente(txtDireccionC.getText());
             registro.setTelefonoCliente(txtTelefonoC.getText());
             registro.setEmailCliente(txtEmailC.getText());
-            
+
             PreparedStatement procedimiento = Conexion.getInstancia().getConexion().prepareCall("{call sp_editarCliente(?, ?, ?, ?, ?, ?, ?)}");
             procedimiento.setInt(1, registro.getCodigoCliente());
             procedimiento.setString(2, registro.getNITCliente());
@@ -302,7 +320,7 @@ public class MenuClientesController implements Initializable {
             procedimiento.setString(6, registro.getTelefonoCliente());
             procedimiento.setString(7, registro.getEmailCliente());
             procedimiento.execute();
-            
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (Exception ex) {
