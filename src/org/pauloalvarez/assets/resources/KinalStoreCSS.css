@@ -336,13 +336,14 @@ table-view .corner {
 }
 
 /* Alertas && Diálogos */
-.alert-pane {
-    -fx-background-color: #2C2C2E;
-    -fx-text-fill: #F2F2F7;
-}
-
 .dialog-pane {
     -fx-background-color: #1C1C1E;
+    -fx-text-fill: #F2F2F7;
+    
+}
+
+.alert-pane {
+    -fx-background-color: #2C2C2E;
     -fx-text-fill: #F2F2F7;
 }
 
@@ -353,6 +354,14 @@ table-view .corner {
 
 .dialog-pane .header-panel .header-title {
     -fx-text-fill: #F2F2F7;
+}
+
+.dialog-pane .label {
+    -fx-text-fill: #F2F2F7;
+}
+
+.dialog-pane:header .header-panel {
+    -fx-background-color: #1C1C1E;
 }
 
 /* Fondo */

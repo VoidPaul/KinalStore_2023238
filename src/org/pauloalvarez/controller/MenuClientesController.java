@@ -187,6 +187,7 @@ public class MenuClientesController implements Initializable {
                 btnEditarC.setDisable(false);
                 btnReporteC.setDisable(false);
                 cargarDatos();
+                tipoDeOperaciones = operaciones.NINGUNO;
                 break;
         }
     }

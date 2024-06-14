@@ -196,6 +196,7 @@ public class MenuProveedoresController implements Initializable {
                 btnEditarP.setDisable(false);
                 btnReporteP.setDisable(false);
                 cargarDatos();
+                tipoDeOperaciones = operaciones.NINGUNO;
                 break;
         }
     }
