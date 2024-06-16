@@ -318,6 +318,16 @@ create procedure sp_editarCargoEmpleado(in
 	_descripcionCargo varchar(45)
 )
 begin
+	update CargoEmpleado
+    set nombreCargo = _nombreCargo,
+    descripcionCargo = _nombreCargo
+    where codigoCargoEmpleado = _codigoCargoEmpleado;
+end$$
+delimiter;
+
+delimiter $$
+create procedure sp_reporteCargoEmpleado()
+begin
 	select CE.codigoCargoEmpleado as 'ID',
     CE.nombreCargo as 'Cargo',
     CE.descripcionCargo as 'Descipción'
@@ -326,9 +336,15 @@ end$$
 delimiter;
 
 delimiter $$
-create procedure sp_reporteCargoEmpleado()
+create procedure sp_buscarCargoEmpleado(in
+	_codigoCargoEmpleado int
+)
 begin
-	
+	select CE.codigoCargoEmpleado as 'ID',
+    CE.nombreCargo as 'Cargo',
+    CE.descripcionCargo as 'Descipción'
+    from CargoEmpleado CE
+    where CE.codigoCargoEmpleado = _codigoCargoEmpleado;
 end$$
 delimiter;
 

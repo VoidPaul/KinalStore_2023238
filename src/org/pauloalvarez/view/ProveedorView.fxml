@@ -30,7 +30,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnEliminarP" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#eliminar" onMouseClicked="#seleccionarElemento" prefHeight="75.0" prefWidth="75.0" text="Eliminar" textAlignment="CENTER">
+                  <Button fx:id="btnEliminarP" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="75.0" prefWidth="75.0" text="Eliminar" textAlignment="CENTER">
                      <graphic>
                         <ImageView fx:id="imgEliminarP" fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>

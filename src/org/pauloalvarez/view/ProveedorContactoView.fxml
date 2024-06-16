@@ -32,7 +32,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnEliminarCP" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#eliminar" onMouseClicked="#seleccionarElemento" prefHeight="75.0" prefWidth="75.0" text="Eliminar" textAlignment="CENTER">
+                  <Button fx:id="btnEliminarCP" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="75.0" prefWidth="75.0" text="Eliminar" textAlignment="CENTER">
                      <graphic>
                         <ImageView fx:id="imgEliminarCP" fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -50,7 +50,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnReporte" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#reporte" prefHeight="75.0" prefWidth="75.0" text="Reporte" textAlignment="CENTER">
+                  <Button fx:id="btnReporteCP" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#reporte" prefHeight="75.0" prefWidth="75.0" text="Reporte" textAlignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -99,7 +99,7 @@
                   <TextField fx:id="txtCodigoTelefonoP" disable="true" GridPane.columnIndex="1" />
                   <TextField fx:id="txtNumeroPrincipalP" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="txtNumeroSecundarioP" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="txtObservacionesP" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtObservacionesTelefonoP" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="ID:" textFill="#f2f2f7">
                      <font>
                         <Font name="Arial" size="12.0" />

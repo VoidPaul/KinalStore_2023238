@@ -21,34 +21,34 @@
          <children>
             <HBox alignment="CENTER" layoutX="1.0" prefHeight="90.0" prefWidth="790.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Agregar" textAlignment="CENTER">
+                  <Button fx:id="btnAgregarCE" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#agregar" prefHeight="75.0" prefWidth="75.0" text="Agregar" textAlignment="CENTER">
                      <graphic>
-                        <ImageView fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgAgregarCE" fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assets/images/selecPersonaMas.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Eliminar" textAlignment="CENTER">
+                  <Button fx:id="btnEliminarCE" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="75.0" prefWidth="75.0" text="Eliminar" textAlignment="CENTER">
                      <graphic>
-                        <ImageView fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgEliminarCE" fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assets/images/selecPersonaMenos.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Editar" textAlignment="CENTER">
+                  <Button fx:id="btnEditarCE" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#editar" onMouseClicked="#seleccionarElemento" prefHeight="75.0" prefWidth="75.0" text="Editar" textAlignment="CENTER">
                      <graphic>
-                        <ImageView fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgEditarCE" fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assets/images/selecEditar.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Reporte" textAlignment="CENTER">
+                  <Button fx:id="btnReporteCE" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#reporte" prefHeight="75.0" prefWidth="75.0" text="Reporte" textAlignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -72,11 +72,11 @@
       </Pane>
       <Pane layoutX="27.0" layoutY="109.0" prefHeight="433.0" prefWidth="736.0" styleClass="innerPane" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="108.0">
          <children>
-            <TableView layoutX="27.0" layoutY="27.0" prefHeight="200.0" prefWidth="415.0">
+            <TableView fx:id="tblCargosEmpleado" layoutX="27.0" layoutY="27.0" prefHeight="200.0" prefWidth="415.0">
                <columns>
-                  <TableColumn prefWidth="50.0" text="ID" />
-                  <TableColumn prefWidth="150.0" text="Nombre del Puesto" />
-                  <TableColumn prefWidth="250.0" text="Descripción" />
+                  <TableColumn fx:id="colCodigoCE" prefWidth="50.0" text="ID" />
+                  <TableColumn fx:id="colNombreCE" prefWidth="150.0" text="Nombre del Puesto" />
+                  <TableColumn fx:id="colDescripciónCE" prefWidth="250.0" text="Descripción" />
                </columns>
             </TableView>
             <GridPane layoutX="462.0" layoutY="27.0" prefHeight="90.0" prefWidth="247.0">
@@ -100,14 +100,14 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Dirección:" textFill="#f2f2f7" GridPane.rowIndex="2">
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Descripción:" textFill="#f2f2f7" GridPane.rowIndex="2">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <TextField disable="true" GridPane.columnIndex="1" />
-                  <TextField disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtCodigoCE" disable="true" GridPane.columnIndex="1" />
+                  <TextField fx:id="txtNombreCE" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtDescripcionCE" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children></Pane>

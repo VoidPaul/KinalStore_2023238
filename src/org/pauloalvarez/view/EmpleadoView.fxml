@@ -22,34 +22,34 @@
          <children>
             <HBox alignment="CENTER" layoutX="1.0" prefHeight="90.0" prefWidth="790.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Agregar" textAlignment="CENTER">
+                  <Button fx:id="btnAgregarE" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#agregar" prefHeight="75.0" prefWidth="75.0" text="Agregar" textAlignment="CENTER">
                      <graphic>
-                        <ImageView fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgAgregarE" fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assets/images/selecPersonaMas.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Eliminar" textAlignment="CENTER">
+                  <Button fx:id="btnEliminarE" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="75.0" prefWidth="75.0" text="Eliminar" textAlignment="CENTER">
                      <graphic>
-                        <ImageView fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgEliminarE" fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assets/images/selecPersonaMenos.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Editar" textAlignment="CENTER">
+                  <Button fx:id="btnEditarE" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#editar" onMouseClicked="#seleccionarElemento" prefHeight="75.0" prefWidth="75.0" text="Editar" textAlignment="CENTER">
                      <graphic>
-                        <ImageView fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgEditarE" fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assets/images/selecEditar.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Reporte" textAlignment="CENTER">
+                  <Button fx:id="btnReporteE" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#reporte" prefHeight="75.0" prefWidth="75.0" text="Reporte" textAlignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -123,13 +123,13 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <ComboBox disable="true" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <TextField disable="true" GridPane.columnIndex="1" />
-                  <TextField disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField disable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField disable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <TextField disable="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <ComboBox fx:id="cbxCargoE" disable="true" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="txtCodigoE" disable="true" GridPane.columnIndex="1" />
+                  <TextField fx:id="txtNombresE" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtApellidosE" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtSueldoE" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtDireccionE" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="txtTurnoE" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="ID:" textFill="#f2f2f7">
                      <font>
                         <Font name="Arial" size="12.0" />
@@ -137,15 +137,15 @@
                   </Label>
                </children>
             </GridPane>
-            <TableView layoutX="27.0" layoutY="27.0" prefHeight="210.0" prefWidth="473.0">
+            <TableView fx:id="tblEmpleados" layoutX="27.0" layoutY="27.0" prefHeight="210.0" prefWidth="473.0">
               <columns>
-                <TableColumn prefWidth="50.0" text="ID" />
-                <TableColumn text="Nombres" />
-                  <TableColumn text="Apellidos" />
-                  <TableColumn prefWidth="60.0" text="Sueldo" />
-                  <TableColumn prefWidth="100.0" text="Dirección" />
-                  <TableColumn prefWidth="60.0" text="Turno" />
-                  <TableColumn prefWidth="75.0" text="Puesto" />
+                <TableColumn fx:id="colCodigoE" prefWidth="50.0" text="ID" />
+                <TableColumn fx:id="colNombresE" text="Nombres" />
+                  <TableColumn fx:id="colApellidosE" text="Apellidos" />
+                  <TableColumn fx:id="colSueldoE" prefWidth="60.0" text="Sueldo" />
+                  <TableColumn fx:id="colDireccionE" prefWidth="100.0" text="Dirección" />
+                  <TableColumn fx:id="colTurnoE" prefWidth="60.0" text="Turno" />
+                  <TableColumn fx:id="colCargoE" prefWidth="75.0" text="Puesto" />
               </columns>
             </TableView>
          </children></Pane>

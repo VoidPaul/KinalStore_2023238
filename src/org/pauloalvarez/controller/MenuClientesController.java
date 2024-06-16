@@ -262,6 +262,7 @@ public class MenuClientesController implements Initializable {
                     btnAgregarC.setDisable(true);
                     btnReporteC.setDisable(true);
                     activarControles();
+                    txtCodigoC.setDisable(true);
                     tipoDeOperaciones = operaciones.ACTUALIZAR;
                 } else {
                     Alert informacion = new Alert(AlertType.INFORMATION);

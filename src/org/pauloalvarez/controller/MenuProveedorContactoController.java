@@ -25,6 +25,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.pauloalvarez.database.Conexion;
 import org.pauloalvarez.model.EmailProveedor;
+import org.pauloalvarez.model.Proveedor;
 import org.pauloalvarez.model.TelProveedor;
 import org.pauloalvarez.system.Main;
 
@@ -44,6 +45,7 @@ public class MenuProveedorContactoController implements Initializable {
     private operaciones tipoDeOperaciones = operaciones.NINGUNO;
     private ObservableList<EmailProveedor> listaEmails = getEmailProveedores();
     private ObservableList<TelProveedor> listaTelefonos = getTelefonoProveedores();
+    private ObservableList<Proveedor> listaProveedores;
 
     @FXML
     private Button btnRegresar;
@@ -109,6 +111,8 @@ public class MenuProveedorContactoController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cargarDatos();
+        cbxCodigoProveedorTelefono.setItems(getProveedores());
+        cbxCodigoProveedorEmail.setItems(getProveedores());
     }
 
     public Main getEscenarioPrincipal() {
@@ -203,7 +207,8 @@ public class MenuProveedorContactoController implements Initializable {
                 resultado = new EmailProveedor(registro.getInt("ID"),
                     registro.getString("E-Mail"),
                     registro.getString("Descripción"),
-                    registro.getInt("Proveedor"));
+                    registro.getInt("Proveedor")
+                );
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -258,7 +263,7 @@ public class MenuProveedorContactoController implements Initializable {
             error.showAndWait();
         }
 
-        listaTelefonos = FXCollections.observableArrayList(listaTelefonos);
+        listaTelefonos = FXCollections.observableArrayList(arrListaTelefonos);
 
         return listaTelefonos;
     }
@@ -298,6 +303,45 @@ public class MenuProveedorContactoController implements Initializable {
         listaEmails = FXCollections.observableArrayList(arrListaEmails);
 
         return listaEmails;
+    }
+    
+    public ObservableList<Proveedor> getProveedores() {
+        ArrayList<Proveedor> arrListaProveedores = new ArrayList<>();
+        
+        try {
+            PreparedStatement procedimiento = Conexion.getInstancia().getConexion().prepareCall("{call sp_reporteProveedor()");
+            ResultSet resultado = procedimiento.executeQuery();
+            
+            while (resultado.next()) {
+                arrListaProveedores.add(new Proveedor(resultado.getInt("ID"),
+                    resultado.getString("NIT"),
+                    resultado.getString("Nombres"),
+                    resultado.getString("Apellidos"),
+                    resultado.getString("Dirección"),
+                    resultado.getString("Razón Social"),
+                    resultado.getString("Contacto Principal"),
+                    resultado.getString("Página Web")
+                ));
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+            error.setTitle(null);
+            error.setHeaderText("Error con la Base de Datos");
+            error.setContentText("La base de datos retornó este error: " + ex.getMessage());
+            error.showAndWait();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+            error.setTitle(null);
+            error.setHeaderText("Error con la Aplicación");
+            error.setContentText("La aplicación retornó este error: " + ex.getMessage());
+            error.showAndWait();
+        }
+        
+        return listaProveedores = FXCollections.observableList(arrListaProveedores);
     }
 
     public void agregar() {
@@ -408,6 +452,8 @@ public class MenuProveedorContactoController implements Initializable {
                     btnAgregarCP.setDisable(true);
                     btnReporteCP.setDisable(true);
                     activarControles();
+                    txtCodigoTelefonoP.setDisable(true);
+                    txtCodigoEmailP.setDisable(true);
                     tipoDeOperaciones = operaciones.ACTUALIZAR;
                 } else {
                     Alert informacion = new Alert(AlertType.INFORMATION);
@@ -589,14 +635,12 @@ public class MenuProveedorContactoController implements Initializable {
 
     public void activarControles() {
         txtCodigoTelefonoP.setDisable(false);
-        txtCodigoTelefonoP.setEditable(true);
         txtNumeroPrincipalP.setDisable(false);
         txtNumeroSecundarioP.setDisable(false);
         txtObservacionesTelefonoP.setDisable(false);
         cbxCodigoProveedorTelefono.setDisable(false);
 
         txtCodigoEmailP.setDisable(false);
-        txtCodigoEmailP.setEditable(true);
         txtEmailP.setDisable(false);
         txtDescripcionEmailP.setDisable(false);
         cbxCodigoProveedorEmail.setDisable(false);

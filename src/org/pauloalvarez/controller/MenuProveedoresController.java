@@ -97,7 +97,7 @@ public class MenuProveedoresController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        cargarDatos();
+        //cargarDatos();
     }
 
     public Main getEscenarioPrincipal() {
@@ -270,6 +270,7 @@ public class MenuProveedoresController implements Initializable {
                     btnAgregarP.setDisable(true);
                     btnReporteP.setDisable(true);
                     activarControles();
+                    txtCodigoP.setDisable(true);
                     tipoDeOperaciones = operaciones.ACTUALIZAR;
                 } else {
                     Alert informacion = new Alert(Alert.AlertType.INFORMATION);
