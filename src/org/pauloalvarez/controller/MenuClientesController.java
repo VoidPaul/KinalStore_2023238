@@ -33,7 +33,7 @@ import org.pauloalvarez.system.Main;
 public class MenuClientesController implements Initializable {
 
     private Main escenarioPrincipal;
-    
+
     private Alert error = new Alert(AlertType.ERROR);
 
     private enum operaciones {
@@ -132,31 +132,30 @@ public class MenuClientesController implements Initializable {
 
             while (resultado.next()) {
                 lista.add(new Cliente(resultado.getInt("ID"),
-                        resultado.getString("NIT"),
-                        resultado.getString("Nombres"),
-                        resultado.getString("Apellidos"),
-                        resultado.getString("Dirección"),
-                        resultado.getString("Teléfono"),
-                        resultado.getString("E-mail")
+                    resultado.getString("NIT"),
+                    resultado.getString("Nombres"),
+                    resultado.getString("Apellidos"),
+                    resultado.getString("Dirección"),
+                    resultado.getString("Teléfono"),
+                    resultado.getString("E-mail")
                 ));
             }
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            
+
             error.setTitle(null);
             error.setHeaderText("Error con la Base de Datos");
             error.setContentText("La base de datos retornó este error: " + String.valueOf(ex.getMessage()));
             error.showAndWait();
-            
+
         } catch (Exception ex) {
             ex.printStackTrace();
-            
+
             error.setTitle(null);
             error.setHeaderText("Error con la Aplicación");
             error.setContentText("La aplicación retornó este error: " + String.valueOf(ex.getMessage()));
             error.showAndWait();
-            
         }
 
         listaClientes = FXCollections.observableArrayList(lista);
@@ -186,8 +185,8 @@ public class MenuClientesController implements Initializable {
                 imgEliminarC.setImage(new Image("/org/pauloalvarez/assets/images/selecPersonaMenos.png"));
                 btnEditarC.setDisable(false);
                 btnReporteC.setDisable(false);
-                cargarDatos();
                 tipoDeOperaciones = operaciones.NINGUNO;
+                cargarDatos();
                 break;
         }
     }
@@ -226,16 +225,27 @@ public class MenuClientesController implements Initializable {
                             listaClientes.remove((Cliente) tblClientes.getSelectionModel().getSelectedItem());
                         } catch (SQLException ex) {
                             ex.printStackTrace();
+
+                            error.setTitle(null);
+                            error.setHeaderText("Error con la Base de Datos");
+                            error.setContentText("La base de datos retornó este error: " + String.valueOf(ex.getMessage()));
+                            error.showAndWait();
+
                         } catch (Exception ex) {
                             ex.printStackTrace();
+
+                            error.setTitle(null);
+                            error.setHeaderText("Error con la Aplicación");
+                            error.setContentText("La aplicación retornó este error: " + String.valueOf(ex.getMessage()));
+                            error.showAndWait();
                         }
                     }
                 } else {
-                        Alert informacion = new Alert(AlertType.INFORMATION);
-                        informacion.setTitle(null);
-                        informacion.setHeaderText("Eliminación Fallida");
-                        informacion.setContentText("Debe Seleccionar lo que quiere Editar.");
-                        informacion.showAndWait();
+                    Alert informacion = new Alert(AlertType.INFORMATION);
+                    informacion.setTitle(null);
+                    informacion.setHeaderText("Eliminación Fallida");
+                    informacion.setContentText("Debe Seleccionar lo que quiere Editar.");
+                    informacion.showAndWait();
                 }
                 break;
         }
@@ -251,12 +261,11 @@ public class MenuClientesController implements Initializable {
                     imgEliminarC.setImage(new Image("/org/pauloalvarez/assets/images/basura.png"));
                     btnAgregarC.setDisable(true);
                     btnReporteC.setDisable(true);
-                    txtCodigoC.setEditable(false);
                     activarControles();
                     tipoDeOperaciones = operaciones.ACTUALIZAR;
                 } else {
                     Alert informacion = new Alert(AlertType.INFORMATION);
-                    
+
                     informacion.setTitle(null);
                     informacion.setHeaderText("Edición Fallida");
                     informacion.setContentText("Debe Seleccionar lo que quiere Editar.");
@@ -308,8 +317,19 @@ public class MenuClientesController implements Initializable {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
+            
+            error.setTitle(null);
+            error.setHeaderText("Error con la Base de Datos");
+            error.setContentText("La base de datos retornó este error: " + String.valueOf(ex.getMessage()));
+            error.showAndWait();
+            
         } catch (Exception ex) {
             ex.printStackTrace();
+            
+            error.setTitle(null);
+            error.setHeaderText("Error con la Aplicación");
+            error.setContentText("La aplicación retornó este error: " + String.valueOf(ex.getMessage()));
+            error.showAndWait();
         }
     }
 
@@ -337,8 +357,19 @@ public class MenuClientesController implements Initializable {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
+            
+            error.setTitle(null);
+            error.setHeaderText("Error con la Base de Datos");
+            error.setContentText("La base de datos retornó este error: " + String.valueOf(ex.getMessage()));
+            error.showAndWait();
+            
         } catch (Exception ex) {
             ex.printStackTrace();
+            
+            error.setTitle(null);
+            error.setHeaderText("Error con la Aplicación");
+            error.setContentText("La aplicación retornó este error: " + String.valueOf(ex.getMessage()));
+            error.showAndWait();
         }
     }
 

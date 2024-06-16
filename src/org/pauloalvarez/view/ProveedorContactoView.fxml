@@ -23,7 +23,7 @@
          <children>
             <HBox alignment="CENTER" layoutX="1.0" prefHeight="90.0" prefWidth="790.0">
                <children>
-                  <Button fx:id="btnAgregarCP" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Agregar" textAlignment="CENTER">
+                  <Button fx:id="btnAgregarCP" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#agregar" prefHeight="75.0" prefWidth="75.0" text="Agregar" textAlignment="CENTER">
                      <graphic>
                         <ImageView fx:id="imgAgregarCP" fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -32,7 +32,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnEliminarCP" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Eliminar" textAlignment="CENTER">
+                  <Button fx:id="btnEliminarCP" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#eliminar" onMouseClicked="#seleccionarElemento" prefHeight="75.0" prefWidth="75.0" text="Eliminar" textAlignment="CENTER">
                      <graphic>
                         <ImageView fx:id="imgEliminarCP" fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -41,7 +41,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnEditarCP" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Editar" textAlignment="CENTER">
+                  <Button fx:id="btnEditarCP" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#editar" onMouseClicked="#seleccionarElemento" prefHeight="75.0" prefWidth="75.0" text="Editar" textAlignment="CENTER">
                      <graphic>
                         <ImageView fx:id="imgEditarCP" fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -50,7 +50,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnReporte" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="Reporte" textAlignment="CENTER">
+                  <Button fx:id="btnReporte" alignment="CENTER" contentDisplay="TOP" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#reporte" prefHeight="75.0" prefWidth="75.0" text="Reporte" textAlignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -76,11 +76,11 @@
          <children>
             <TableView fx:id="tblTelefonoProveedor" layoutX="27.0" layoutY="27.0" prefHeight="150.0" prefWidth="411.0">
               <columns>
-                <TableColumn prefWidth="50.0" text="ID" />
-                <TableColumn prefWidth="150.0" text="No. Principal" />
-                  <TableColumn prefWidth="150.0" text="No. Secundario" />
-                  <TableColumn prefWidth="150.0" text="Observaciones" />
-                  <TableColumn prefWidth="75.0" text="Proveedor" />
+                <TableColumn fx:id="colCodigoTelefonoP" prefWidth="50.0" text="ID" />
+                <TableColumn fx:id="colNumeroPrincipalP" prefWidth="150.0" text="No. Principal" />
+                  <TableColumn fx:id="colNumeroSecundarioP" prefWidth="150.0" text="No. Secundario" />
+                  <TableColumn fx:id="colObservacionesTelefonoP" prefWidth="150.0" text="Observaciones" />
+                  <TableColumn fx:id="colCodigoProveedorTelefono" prefWidth="75.0" text="Proveedor" />
               </columns>
             </TableView>
             <GridPane layoutX="458.0" layoutY="27.0" maxHeight="150.0" maxWidth="251.0" prefHeight="150.0" prefWidth="251.0">
@@ -130,7 +130,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="cbxCodigoProveedorT" disable="true" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="cbxCodigoProveedorTelefono" disable="true" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
             <GridPane layoutX="502.0" layoutY="204.0" maxHeight="120.0" maxWidth="207.0" prefHeight="120.0" prefWidth="207.0">
@@ -168,15 +168,15 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="cbxCodigoProveedorE" disable="true" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="cbxCodigoProveedorEmail" disable="true" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
             <TableView fx:id="tblEmailProveedor" layoutX="27.0" layoutY="204.0" prefHeight="150.0" prefWidth="411.0">
                <columns>
-                  <TableColumn prefWidth="50.0" text="ID" />
-                  <TableColumn prefWidth="150.0" text="E-Mail" />
-                  <TableColumn prefWidth="150.0" text="Descripción" />
-                  <TableColumn prefWidth="75.0" text="Proveedor" />
+                  <TableColumn fx:id="colCodigoEmailP" prefWidth="50.0" text="ID" />
+                  <TableColumn fx:id="colEmailP" prefWidth="150.0" text="E-Mail" />
+                  <TableColumn fx:id="colDescripcionEmailP" prefWidth="150.0" text="Descripción" />
+                  <TableColumn fx:id="colCodigoProveedorEmail" prefWidth="75.0" text="Proveedor" />
                </columns>
             </TableView>
             <Line endX="580.0" layoutX="128.0" layoutY="191.0" startX="-100.0" stroke="#48484a" />

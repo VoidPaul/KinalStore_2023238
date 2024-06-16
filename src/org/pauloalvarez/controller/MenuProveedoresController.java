@@ -97,7 +97,7 @@ public class MenuProveedoresController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //cargarDatos();
+        cargarDatos();
     }
 
     public Main getEscenarioPrincipal() {
@@ -114,7 +114,7 @@ public class MenuProveedoresController implements Initializable {
         colNITP.setCellValueFactory(new PropertyValueFactory<Proveedor, String>("NITProveedor"));
         colNombresP.setCellValueFactory(new PropertyValueFactory<Proveedor, String>("nombresProveedor"));
         colApellidosP.setCellValueFactory(new PropertyValueFactory<Proveedor, String>("apellidosProveedor"));
-        colDireccionP.setCellValueFactory(new PropertyValueFactory<Proveedor, String>("direccion"));
+        colDireccionP.setCellValueFactory(new PropertyValueFactory<Proveedor, String>("direccionProveedor"));
         colRazonSocialP.setCellValueFactory(new PropertyValueFactory<Proveedor, String>("razonSocial"));
         colContactoPrincipalP.setCellValueFactory(new PropertyValueFactory<Proveedor, String>("contactoPrincipal"));
         colPaginaWebP.setCellValueFactory(new PropertyValueFactory<Proveedor, String>("paginaWeb"));
@@ -140,32 +140,31 @@ public class MenuProveedoresController implements Initializable {
 
             while (resultado.next()) {
                 lista.add(new Proveedor(resultado.getInt("ID"),
-                        resultado.getString("NIT"),
-                        resultado.getString("Nombres"),
-                        resultado.getString("Apellidos"),
-                        resultado.getString("Dirección"),
-                        resultado.getString("Razón Social"),
-                        resultado.getString("Contacto Principal"),
-                        resultado.getString("Página Web")
+                    resultado.getString("NIT"),
+                    resultado.getString("Nombres"),
+                    resultado.getString("Apellidos"),
+                    resultado.getString("Dirección"),
+                    resultado.getString("Razón Social"),
+                    resultado.getString("Contacto Principal"),
+                    resultado.getString("Página Web")
                 ));
             }
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            
+
             error.setTitle(null);
             error.setHeaderText("Error con la Base de Datos");
-            error.setContentText("La base de datos retornó este error: " + ex.getMessage());
+            error.setContentText("La base de datos retornó este error: " + String.valueOf(ex.getMessage()));
             error.showAndWait();
-            
+
         } catch (Exception ex) {
             ex.printStackTrace();
-            
+
             error.setTitle(null);
             error.setHeaderText("Error con la Aplicación");
-            error.setContentText("La aplicación retornó este error: " + ex.getMessage());
+            error.setContentText("La aplicación retornó este error: " + String.valueOf(ex.getMessage()));
             error.showAndWait();
-            
         }
 
         listaProveedores = FXCollections.observableArrayList(lista);
@@ -195,8 +194,8 @@ public class MenuProveedoresController implements Initializable {
                 imgEliminarP.setImage(new Image("/org/pauloalvarez/assets/images/selecPersonaMenos.png"));
                 btnEditarP.setDisable(false);
                 btnReporteP.setDisable(false);
-                cargarDatos();
                 tipoDeOperaciones = operaciones.NINGUNO;
+                cargarDatos();
                 break;
         }
     }
@@ -237,7 +236,7 @@ public class MenuProveedoresController implements Initializable {
 
                             error.setTitle(null);
                             error.setHeaderText("Error con la Base de Datos");
-                            error.setContentText("La base de datos retornó este error: " + ex.getMessage());
+                            error.setContentText("La base de datos retornó este error: " + String.valueOf(ex.getMessage()));
                             error.showAndWait();
 
                         } catch (Exception ex) {
@@ -245,9 +244,8 @@ public class MenuProveedoresController implements Initializable {
 
                             error.setTitle(null);
                             error.setHeaderText("Error con la Aplicación");
-                            error.setContentText("La aplicación retornó este error: " + ex.getMessage());
+                            error.setContentText("La aplicación retornó este error: " + String.valueOf(ex.getMessage()));
                             error.showAndWait();
-
                         }
                     }
                 } else {
@@ -271,7 +269,6 @@ public class MenuProveedoresController implements Initializable {
                     imgEliminarP.setImage(new Image("/org/pauloalvarez/assets/images/basura.png"));
                     btnAgregarP.setDisable(true);
                     btnReporteP.setDisable(true);
-                    txtCodigoP.setEditable(false);
                     activarControles();
                     tipoDeOperaciones = operaciones.ACTUALIZAR;
                 } else {
@@ -329,20 +326,19 @@ public class MenuProveedoresController implements Initializable {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-
+            
             error.setTitle(null);
             error.setHeaderText("Error con la Base de Datos");
-            error.setContentText("La base de datos retornó este error: " + ex.getMessage());
+            error.setContentText("La base de datos retornó este error: " + String.valueOf(ex.getMessage()));
             error.showAndWait();
-
+            
         } catch (Exception ex) {
             ex.printStackTrace();
-
+            
             error.setTitle(null);
             error.setHeaderText("Error con la Aplicación");
-            error.setContentText("La aplicación retornó este error: " + ex.getMessage());
+            error.setContentText("La aplicación retornó este error: " + String.valueOf(ex.getMessage()));
             error.showAndWait();
-
         }
     }
 
@@ -372,20 +368,19 @@ public class MenuProveedoresController implements Initializable {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-
+            
             error.setTitle(null);
             error.setHeaderText("Error con la Base de Datos");
-            error.setContentText("La base de datos retornó este error: " + ex.getMessage());
+            error.setContentText("La base de datos retornó este error: " + String.valueOf(ex.getMessage()));
             error.showAndWait();
-
+            
         } catch (Exception ex) {
             ex.printStackTrace();
-
+            
             error.setTitle(null);
             error.setHeaderText("Error con la Aplicación");
-            error.setContentText("La aplicación retornó este error: " + ex.getMessage());
+            error.setContentText("La aplicación retornó este error: " + String.valueOf(ex.getMessage()));
             error.showAndWait();
-
         }
     }
 
